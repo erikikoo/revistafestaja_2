@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create :email => "paulinhapooh08@hotmail.com", :password => "083126"
+User.create :email => "paulinhapooh08@hotmail.com", :password => "083126"
