@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  cliente: one
+  produto: one
+  edicao: MyString
+  valor_total: 1.5
+  n_parcelas: 1
+  cod: 1
+  forma_pagmento: MyString
+
+two:
+  user: two
+  cliente: two
+  produto: two
+  edicao: MyString
+  valor_total: 1.5
+  n_parcelas: 1
+  cod: 1
+  forma_pagmento: MyString

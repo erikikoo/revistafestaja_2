@@ -1,0 +1,11 @@
+<%= simple_form_for(@segmento, remote: true) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">    
+    <%= f.input :descricao, class: 'form-control', autofocus: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Incluir" %>
+  </div>
+<% end %>

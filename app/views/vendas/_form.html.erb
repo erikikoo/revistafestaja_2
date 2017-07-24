@@ -1,0 +1,116 @@
+<%= simple_form_for(@venda, remote: true) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">    
+    <%= f.input :cod, label: 'Venda Nº', disabled: true %>
+    <hr />
+    <%= f.association :cliente, label_method: :razao_social, value_method: :id %>
+    
+    <%= f.association :produtos, label_method: :descricao, value_method: :id, :input_html => { :multiple => false } %>    
+    
+    <%= f.input :edicao, collection: @meses, include_blank: false, selected: @mes %>
+    <div class="input-group">
+      <span class="input-group-addon">R$: </span>
+      <div id="valor-total">
+        <%= render 'field_valor_total', f: f %>
+      </div>      
+      
+    </div>
+    <%= f.association :forma_pagamento, label_method: :descricao, value_method: :id, include_blank: true %>            
+    
+    
+    <div id='parcelas' class='panel panel-default'>
+         <div class="panel-heading">Parcelas</div>
+      
+          <!-- Link Gem cocoon --> 
+          <%= link_to_add_association '+', f , :parcelas, 'data-association-insertion-node' => "#parcelas", 'data-association-insertion-method' => 'append', class: 'btnAdd btn btn-primary btn-New-Contact' %>    
+          <%= f.simple_fields_for :parcelas do |par| %>          
+              <%= render 'parcela_fields',  f: par  %>
+          <% end %>
+      
+    </div>
+    
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, 'Criar' %>
+    </div>
+  </div>  
+<% end %>
+
+<script>
+      $(document).ready(function() {
+          $('#parcelas').on('cocoon:after-insert', function(e, insertedItem) {
+            load_datepicked();
+          });
+        load_datepicked();
+
+        $('#venda_forma_pagamento_id').change(function(event) {
+          var op = $(this).val();
+          var val_total = $('#venda_valor_total').val()          
+          //alert(op);
+          if(op == 1) {
+              $('#venda_n_parcelas').val('');
+              $('#venda_n_parcelas').attr('disabled', 'true');
+              $('#parcelas').css('display', 'none');
+          }
+          if (op == 2) {
+              $('#venda_n_parcelas').removeAttr('disabled');
+               $('#parcelas').css('display', 'block');
+              
+            }  
+        
+        });
+
+        $("#venda_valor_total").keyup(function(event) {
+          var val = $(this).val();
+           
+           if (parseInt(val) < 50) {
+              $('#venda_n_parcelas').attr({
+                'disabled': 'true'                
+              });
+              
+              $("#venda_forma_pagamento_id option[value='1']").attr('selected', 'selected');
+              $('#venda_forma_pagamento_id').attr({
+                'disabled': 'true'
+              });
+           } else {
+              $('#venda_forma_pagamento_id').removeAttr('disabled');
+           }
+        });     
+        
+        $("#venda_produto_ids").change(function(event) {
+          var val = $(this).val();
+          $.ajax({
+            url: '/reloadTotal',            
+            data: {id: val}
+          })
+          .done(function() {
+            console.log("success");
+          })
+          .success(function(result){
+            console.log(result);
+          })
+          .fail(function() {
+            console.log("error");
+          })
+          .always(function() {
+            console.log("complete");
+          });
+          
+          
+        });
+
+    });
+function load_datepicked() {        
+        $('.datepicker').datepicker({
+          language: "pt-BR",
+          todayBtn: 'linked',
+          todayHighlight: true,
+          autoclose: true
+        });
+        
+    }
+      
+
+</script>

@@ -1,0 +1,17 @@
+<div class="show_segmentos">
+	<% unless @action.eql?('update') %>
+	      <% for segmento in Segmento.all %>
+		    <span>
+		    	<%= label_tag "cliente_segmento_ids_#{segmento.id}" do %>
+				    <%= check_box_tag "cliente[segmento_ids][]", segmento.id %>
+				    <%= label_tag "cliente_segmento_ids_#{segmento.id}",segmento.descricao, class: 'collection_check_boxes' %>
+		    	<% end %>
+		    </span>
+		  <% end %>
+	<% else %>  		
+	      <%= f.collection_check_boxes(:segmento_ids, Segmento.all, :id, :descricao) %> 
+	<% end %>	
+</div>
+
+	
+

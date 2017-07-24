@@ -1,0 +1,68 @@
+<div class='col-md-3 index-item img-thumbnail'>					
+				<h3><%= cliente.nome %></h3>
+						
+				<h6><strong>Segmento</strong></h6>
+				<% cliente.segmentos.each do |s|%>
+					<i class="glyphicon glyphicon-ok"></i><%= s.descricao %> <br />
+				<% end %>
+				<hr />
+				<h6><strong>Contato</strong></h6>
+				<% cliente.contatos.each do |c|%>
+					<% if c.whatsapp %>
+						<i class="fa fa-whatsapp fa-5x" aria-hidden="true"></i>
+						<%= c.numero %> <br />
+					<% end %>
+					<% if c.whatsapp != true %>
+						<i class="fa fa-phone" aria-hidden="true"></i>
+						<%= c.numero %> <br />
+					<% end %>	
+							
+				<% end %>
+				<hr />
+				<h6><strong>Endereço</strong></h6>				
+				<% cliente.enderecos.each do |e|%>
+						
+					<%= e.end %>
+					-
+					<%= e.numero %>		
+					-
+					<%= e.complemento unless e.complemento.blank?  %>
+							
+				<% end %>
+			</div>
+<!--  2 -->
+
+			<div class='cliente-index-logo'>						
+								<img src="http://via.placeholder.com/250x220" alt="" class='img-responsive'>
+							</div>
+							<div class="cliente-index-conteudo">
+								<h5 class='text-center'><%= cliente.nome %></h5>
+																
+							<h6><strong>Segmento</strong></h6>
+							<% cliente.segmentos.each do |s|%>
+								<i class="glyphicon glyphicon-ok"></i><%= s.descricao %> <br />
+							<% end %>
+							<hr />
+							<h6><strong>Contato</strong></h6>
+							<% cliente.contatos.each do |c|%>
+								<% if c.whatsapp %>
+									<i class="fa fa-whatsapp fa-5x" aria-hidden="true"></i>
+									<%= c.numero %> <br />
+								<% end %>
+								<% if c.whatsapp != true %>
+									<i class="fa fa-phone" aria-hidden="true"></i>
+									<%= c.numero %> <br />
+								<% end %>	
+										
+							<% end %>
+								<!-- <hr />
+								<h6><strong>Endereço</strong></h6>				
+								<% cliente.enderecos.each do |e|%>
+										
+									<%= e.end unless e.end.blank? %>		
+									<%= e.numero.blank? ? 's/n' : ' - ' + e.numero %>
+									<%= '- ' +  e.complemento unless e.complemento.blank?  %>
+											
+								<% end %> -->
+							
+							</div>	

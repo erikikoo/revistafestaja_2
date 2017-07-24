@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Razão Social:</strong>
+  <br />	
+  	<%= @cliente.razao_social %>
+  <br />
+  	<%= @cliente.responsavel %>	
+</p>
+<p>
+	<strong>Endereço:</strong>
+	<br />
+	<% @cliente.enderecos.each do |e|%>
+								
+		<%= e.end unless e.end.blank? %>
+		
+		<%= e.numero ? ' - s/n' : ' - ' + e.numero %>		
+		
+		<%= ' - ' + e.complemento unless e.complemento.blank?  %>
+									
+	<% end %>
+</p>
+	<p>
+		<strong>Segmento</strong>
+		<ul>
+			<% @cliente.segmentos.each do |s|%>
+				<li>
+					<%= s.descricao %>					
+				</li>
+			<% end %>			
+		</ul>
+	</p>
+<p>
+	<strong>Contatos: </strong>
+	<br />
+	<% @cliente.contatos.each do |c|%>
+		<% if c.whatsapp %>
+			<i class="fa fa-whatsapp fa-5x" aria-hidden="true"></i>
+			<%= c.numero %> <br />
+		<% end %>
+		<% if c.whatsapp != true %>
+			<i class="fa fa-phone" aria-hidden="true"></i>
+			<%= c.numero %> <br />
+	    <% end %>	
+						
+	<% end %>
+</p>
+
+<%= link_to 'Editar', edit_cliente_path(@cliente), remote: true,class: 'btn btn-default btn-show-editar' %>

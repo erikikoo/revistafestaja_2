@@ -1,0 +1,37 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require bootstrap-datepicker
+ *= require_self
+ *= require_tree .
+*/
+
+
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css);
+
+textarea {
+	resize: none;
+}
+.collection_check_boxes, .label-checkbox {
+	padding: 5px;	
+	display: inline;	
+}
+
+.modal-header .close {
+	margin-top: -22px !important;
+}
+
+
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+

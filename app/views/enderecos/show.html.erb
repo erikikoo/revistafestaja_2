@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>End:</strong>
+  <%= @endereco.end %>
+</p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @endereco.numero %>
+</p>
+
+<p>
+  <strong>Complemento:</strong>
+  <%= @endereco.complemento %>
+</p>
+
+<p>
+  <strong>Cliente:</strong>
+  <%= @endereco.cliente %>
+</p>
+
+<%= link_to 'Edit', edit_endereco_path(@endereco) %> |
+<%= link_to 'Back', enderecos_path %>

@@ -1,0 +1,17 @@
+<div class="panel-body">
+	<div class="form-group nested-fields">
+		
+	  <div class="input-bar">
+			<div class="input-bar-item">
+	    		<%= f.input_field :whatsapp, as: :boolean, boolean_style: :inline %> Whatsapp
+	    	</div>
+	    	<div class="input-bar-item">
+	    		<%= f.text_field :numero, class: 'form-control telefones', placeholder: 'Digite o Telefone aqui...'  %>
+			</div>
+	    	<div class="input-bar-item">
+	    		<%= link_to_remove_association "remove", f, class: 'btn btn-danger btn-remove-contact' %>	
+	    	</div>	
+	    </div>	
+	</div>
+</div>
+

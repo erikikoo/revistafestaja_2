@@ -1,0 +1,30 @@
+// Place all the styles related to the Vendas controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#parcelas {
+	display: none;
+}
+
+.input-bar-item:not(:last-child) {
+	//position: relative !important;
+	//top: -30px !important;
+	margin: 0 10px;
+}
+
+.table-show-parc {
+	text-indent: 30px;
+}
+
+ .search {
+ 	position: relative; 	
+ 	top: 18px; 	
+ }
+
+ .cabecalho-index-vendas {
+	display: flex;
+	ul {
+		margin-right: 80px;
+	}
+}
+

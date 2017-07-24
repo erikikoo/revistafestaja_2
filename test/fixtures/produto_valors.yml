@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  produto: one
+  valor: one
+  mes: 2017-07-14
+
+two:
+  produto: two
+  valor: two
+  mes: 2017-07-14

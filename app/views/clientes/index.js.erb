@@ -1,0 +1,7 @@
+<% if @location = 'adm' %>
+$('#principal-adm').html('<%= escape_javascript (render "clientes/index") %>');
+<% else %>
+	$('#panel-msn').html('<%= escape_javascript (render partial: "msn") %>');
+	$('#clientes').html('<%= escape_javascript (render partial: "index", location: @clientes) %>');
+<% end %>
+

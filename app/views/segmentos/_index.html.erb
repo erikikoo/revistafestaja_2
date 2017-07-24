@@ -1,0 +1,36 @@
+<% if notice %>
+  <p id="notice" class='alert alert-success'><%= notice %></p>
+<% end %>  
+
+<ol class="breadcrumb">
+  <li><%= link_to 'Administrador', admin_path  %></li>
+  <li>Segmentos</li>    
+</ol>
+
+<%= link_to raw("<i class='glyphicon glyphicon-plus'></i>"), new_segmento_path, class: 'btn btn-primary btnAdd btnNew', remote: true %>
+
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Descrição</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @segmentos.each do |segmento| %>
+      <tr>
+        <td><%= segmento.descricao %></td>        
+        <td>
+          <%= link_to 'Editar', edit_segmento_path(segmento), class: 'btn btn-default', remote: true %>
+          <%= link_to 'Apagar', segmento, method: :delete, data: { confirm: 'Deseja proceguir?' }, class: 'btn btn-danger', remote: true %>
+            
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

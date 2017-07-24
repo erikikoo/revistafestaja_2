@@ -1,0 +1,34 @@
+<% if notice %>
+  <p id="notice" class='alert alert-success'><%= notice %></p>
+<% end %> 
+
+<ol class="breadcrumb">
+  <li><%= link_to 'Administrador', admin_path %></li>
+  <li>Produtos</li>    
+</ol>
+<%= link_to raw("<i class='glyphicon glyphicon-plus'></i>"), new_produto_path, class: 'btn btn-primary btnAdd btnNew', remote: true %>
+
+<table class='table table-hover'>
+  <thead>
+    <tr>
+      <th colspan="3">Descrição</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @produtos.each do |produto| %>
+      <tr>
+        <td colspan="3"><%= produto.descricao %></td>
+        <td>
+          <%= link_to 'Show', produto, remote: true, class: 'btn btn-default' %>
+          <%= link_to 'Editar', edit_produto_path(produto), remote: true,class: 'btn btn-default' %>
+          <%= link_to 'Apagar', produto, remote: true, method: :delete, class: 'btn btn-danger', data: { confirm: 'Deseja proceguir?' } %>
+        </td>  
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

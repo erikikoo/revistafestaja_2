@@ -1,0 +1,193 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+// .index-grid {
+/*
+   Spezific styling for salvattore
+   Feel free to edit it as you like
+   More info at http://salvattore.com
+ */
+
+/* Base styles */
+
+body {
+    background: #e9ebee;
+    height: 2000px;
+}
+
+a:link, a:hover, a:visited {
+    border: none !important;
+}
+
+#index-cliente-btn {
+    position: fixed;
+    z-index: 99;
+    
+}
+#index-clientes {
+    top: 60px !important;
+    position: relative;
+}
+
+.column {
+    float: left;
+    margin: 10px;
+    margin-bottom: 20px;
+}
+.size-1of5 {
+    width: 18%;
+}
+.size-1of4 {
+    width: 22%;
+}
+.size-1of3 {
+    width: 29.333%;
+}
+.size-1of2 {
+    width: 44%;
+}
+
+#search-form{ 
+    opacity: 1;
+}
+
+.item {        
+
+    border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	padding: 1em;
+	background-color: #fff;
+	
+   
+    &:hover {
+        -webkit-box-shadow: 0px 3px 5px 0px rgba(156,150,156,1);
+        -moz-box-shadow: 0px 3px 5px 0px rgba(156,150,156,1);
+        box-shadow: 0px 3px 5px 0px rgba(156,150,156,1);
+    }
+	h3 {
+ 		text-align: center;
+ 		font-size: 1.2rem;
+ 		font-weight: bold;
+
+ 	}
+ 	i {
+		
+ 		font-weight: normal;
+ 		font-size: 1rem;
+ 		margin-right: 5px;
+ 	}
+}
+
+.btn-topo {
+    display: none;
+    position: fixed;
+    position:fixed;
+    top:85vh;
+    right:40px;
+    background-color: rgba(40, 40, 40, .5);
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    z-index: 999;
+
+}
+.btn-topo {
+    &:before {
+        content: '^';
+        font-size: 3rem;
+        color: #fff;
+        top: 18px;
+        left:12px;        
+        position: relative;
+    }
+    &:hover {
+        text-decoration: none;  
+    }
+
+}
+
+.btn-topo:hover {
+    background-color: rgba(40, 40, 40, 1);
+}
+
+@media only screen and (max-width: 399px) {
+    
+    .btn-search, #q_razao_social_cont{
+        width: 79vw;
+    }
+    #timeline[data-columns]::before {
+        content: '1 .column.size-1of1';
+    }
+ 
+}
+
+ 
+
+@media only screen and (min-width: 400px) {
+        
+    .btn-search {
+        width: 21vw;
+    }
+    #q_razao_social_cont {
+        display: inline;
+        width: 56vw;
+    }
+    #timeline[data-columns]::before {
+        content: '2 .column.size-1of2';
+    }
+    
+}
+
+@media (min-width: 400px) and (max-width: 415px) {
+    #q_razao_social_cont {
+        display: inline;
+        width: 57vw;
+    }
+
+}
+
+@media only screen and (min-width: 700px) {
+    
+    .btn-search {
+    width: 16vw;
+    }
+    #q_razao_social_cont {
+        display: inline;
+        width: 71vw;
+    }
+    #timeline[data-columns]::before {
+        content: '3 .column.size-1of3';
+    }
+ 
+}
+
+@media only screen and (min-width: 900px) {
+     
+    .btn-search {
+    width: 10vw;
+    }
+    #q_razao_social_cont {
+        width: 80vw;
+    }
+    #timeline[data-columns]::before {
+        content: '4 .column.size-1of4';
+    }
+   
+}
+
+@media only screen and (min-width: 1100px) {
+    
+    .btn-search {
+        width: 10vw;
+    }
+    #q_razao_social_cont {
+        width: 80vw;
+    }    
+
+    #timeline[data-columns]::before {
+        content: '5 .column.size-1of5';
+    }
+    
+}
+

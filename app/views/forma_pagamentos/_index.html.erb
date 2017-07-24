@@ -1,0 +1,30 @@
+
+<p id="notice" class='alert alert-success'><%= notice %></p>
+
+
+<%= link_to raw("<i class='glyphicon glyphicon-plus'></i>"), new_forma_pagamento_path, class: 'btnAdd btnNew btn btn-primary', remote: true%>
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Descrição</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @forma_pagamentos.each do |forma_pagamento| %>
+      <tr>
+        <td><%= forma_pagamento.descricao %></td>
+        <td>            
+            <%= link_to 'Editar', edit_forma_pagamento_path(forma_pagamento), class: 'btn btn-default', remote: true %>
+            <%= link_to 'Apagar', forma_pagamento, method: :delete, data: { confirm: 'Deseja prosseguir?' }, class: 'btn btn-danger', remote: true %>
+              
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

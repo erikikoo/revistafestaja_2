@@ -1,0 +1,17 @@
+<div class="panel-body">
+	<div class="form-group nested-fields">
+		
+	  <div class="input-bar">
+			<div class="input-bar-item">
+	    		<%= f.input :valor, class: 'form-control' %>
+	    	</div>
+	    	<div class="input-bar-item">
+	    		<%= f.input :vencimento, :as => :string, :input_html => { :id => 'datepicker', :class => 'datepicker'} %>
+			</div>
+			
+	    	<div class="input-bar-item">
+	    		<%= link_to_remove_association "remove", f, class: 'btn btn-danger btn-remove-contact' %>	
+	    	</div>	
+	    </div>	
+	</div>
+</div>

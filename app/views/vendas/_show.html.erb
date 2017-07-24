@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cliente:</strong>
+  <%= @venda.cliente.razao_social %>
+</p>
+
+<p>
+  <strong>Produto:</strong>
+  <% @venda.produtos.each do |pro| %>
+    <%= pro.descricao %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Edicao:</strong>
+  <%= @venda.edicao %>
+</p>
+
+<p>
+  <strong>Valor total:</strong>
+  <%= @venda.valor_total %>
+</p>
+
+<p>
+  <strong>Forma pagmento:</strong>
+  <%= @venda.forma_pagamento.descricao %>
+</p>
+
+<p>
+  <strong>Parcelas:</strong>
+  <br/ >
+  <table class='table-show-parc'>
+    <% i = 1 %>
+    <% @venda.parcelas.each do |par|%>
+      <tr>
+        
+        <td>parcela: <%= i %></td>
+        <td>Valor: <%= par.valor %></td>
+        <td>Vencimento: <%= par.vencimento %></td>
+      </tr>
+      <% i += 1%>
+    <% end %> 
+    
+  </table>
+</p>
+
+<%= link_to 'Editar', edit_venda_path(@venda), remote: true,class: 'btn btn-default' %>
+

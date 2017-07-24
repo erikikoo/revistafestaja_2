@@ -1,0 +1,31 @@
+
+<% if notice %>
+  <p id="notice" class='alert alert-success'><%= notice %></p>
+<% end %>  
+
+<ol class="breadcrumb">
+  <li><%= link_to 'Administrador', admin_path  %></li>
+  <li>Clientes</li>    
+</ol>
+
+<%= link_to raw("<i class='glyphicon glyphicon-plus'></i>"), new_cliente_path, class: 'btnAdd btnNew btn btn-primary', remote: true%>
+
+<%= paginate @clientes, :theme => 'twitter-bootstrap-3',:pagination_class => "pagination-sm" %>
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th  colspan="2">Cliente</th>
+      <th>Segmentos</th>
+
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody id='clientes'>
+    <%= render partial: 'clientes/clientes_all' %>
+  </tbody>
+</table>
+<div id="admin-modal" class="modal fade"></div>
+
+
+

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RevistaFestaJa</title>
+    <%= csrf_meta_tags %>
+  
+    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.min.js" %>
+    
+    <!--[if lte IE 9]>
+<script src="masonry.pkgd.min.js"></script>
+<![endif]-->  
+  </head>
+
+  <body>
+    <%= yield %>
+    <a href="#" class='btn-topo'></a>
+  </body>
+  
+</html>

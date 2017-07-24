@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Venda:</strong>
+  <%= @parcela.venda %>
+</p>
+
+<p>
+  <strong>Valor:</strong>
+  <%= @parcela.valor %>
+</p>
+
+<p>
+  <strong>Vencimento:</strong>
+  <%= @parcela.vencimento %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @parcela.status %>
+</p>
+
+<%= link_to 'Edit', edit_parcela_path(@parcela) %> |
+<%= link_to 'Back', parcelas_path %>

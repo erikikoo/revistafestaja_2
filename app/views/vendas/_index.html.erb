@@ -1,0 +1,59 @@
+<% if notice %>
+  <p id="notice" class='alert alert-success'><%= notice %></p>
+<% end %>
+
+<ol class="breadcrumb">
+  <li><%= link_to 'Administrador', admin_path  %></li>
+  <li>Vendas</li>    
+</ol>
+<% link_to raw("<i class='glyphicon glyphicon-plus'></i>"), new_venda_path, class: 'btn btn-primary btnAdd btnNew', remote: true %>
+<div class='cabecalho-index-vendas'>
+  <span>
+      <%= paginate @vendas, :theme => 'twitter-bootstrap-3',:pagination_class => "pagination-sm" %>    
+  </span>
+  <span class='search'>
+    <%= render 'search' %>    
+  </span>
+</div>
+<table class='table table-striped'>
+  <thead>
+    <tr>      
+      <th>Código</th>
+      <th>Cliente</th>
+      <th>Produto</th>
+      <th>Edição</th>
+      <th>Valor total</th>      
+      <th>Forma pagmento</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% unless @vendas %>
+      <h2>Não encontramos registros</h2>
+    <% else %>
+    <% @vendas.each do |venda| %>
+      <tr>        
+        <td><%= venda.codigo %></td>
+        <td><%= venda.cliente.razao_social %></td>
+        <td>
+            <% venda.produtos.each do |p| %>
+              <%= p.descricao %><br />
+            <% end %>      
+        </td>
+        <td><%= venda.edicao %></td>
+        <td><%= venda.valor_total %></td>        
+        <td><%= venda.forma_pagamento.descricao %></td>
+        <td>
+            <%= link_to 'Detalhes', "venda/show/#{venda.id}",remote: true, class: 'btn btn-default btn-sm' %>
+            <%= link_to 'Editar', edit_venda_path(venda),remote: true, class: 'btn btn-default btn-sm' %>
+            <%= link_to 'Apagar', venda, method: :delete, remote: true,data: { confirm: 'Deseja continuar?' }, class: 'btn btn-danger btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

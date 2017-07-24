@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Parcelas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Venda</th>
+      <th>Valor</th>
+      <th>Vencimento</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parcelas.each do |parcela| %>
+      <tr>
+        <td><%= parcela.venda %></td>
+        <td><%= parcela.valor %></td>
+        <td><%= parcela.vencimento %></td>
+        <td><%= parcela.status %></td>
+        <td><%= link_to 'Show', parcela %></td>
+        <td><%= link_to 'Edit', edit_parcela_path(parcela) %></td>
+        <td><%= link_to 'Destroy', parcela, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Parcela', new_parcela_path %>

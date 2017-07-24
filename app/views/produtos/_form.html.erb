@@ -1,0 +1,19 @@
+<%= simple_form_for(@produto) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :descricao %>
+  </div>
+	<div  class='panel panel-default'>
+      <div class="panel-heading">Preço</div>
+      <div class="panel-body">
+        <%= f.simple_fields_for :valors do |e| %>          
+              <%= render 'valors/form',  f: e  %>
+          <% end %>
+      </div>     
+      
+  </div>	
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

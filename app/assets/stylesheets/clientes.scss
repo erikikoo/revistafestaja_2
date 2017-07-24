@@ -1,0 +1,55 @@
+// Place all the styles related to the clientes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.btnAdd:hover, .btnAdd:visited, .btnAdd:active, .btnAdd:link {
+	color: #fff;
+	border: none !important;
+}
+
+
+.btnAdd {	
+	color: #fff;	
+	position: relative;
+	float: right;
+	
+	
+}
+
+.btn-New-Contact {
+	margin: 15px
+}
+.btnNew {	
+	margin-right: 50px;
+
+}
+
+.input-bar {
+    display: inline-flex;
+    width: 100%;
+}
+
+.input-bar-item {
+    display: table-cell;
+}
+
+
+
+.actions {
+	float: right;
+	margin-bottom: 40px;
+}
+
+.show_segmentos {
+	column-count: 5;
+	column-gap: .5rem;
+
+}
+
+.btn-new-cliente-voltar {
+	margin: 30px 0;
+}
+
+.btn-show-editar {
+	position: relative;
+	left: 88%;
+}

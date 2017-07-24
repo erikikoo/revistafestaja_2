@@ -1,0 +1,8 @@
+<%= search_form_for(@q, url: '/venda-search', :method => :post, remote: true, class: 'form-inline') do |f| %>	  
+	  <div id='search-form'>			
+		  <%= f.search_field :codigo_cont, class: 'form-control' %>
+		  
+		  <%= f.submit "Pesquisar", class: 'btn btn-default btn-search' %>
+		  
+	  </div>
+<% end %>
