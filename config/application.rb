@@ -17,6 +17,7 @@ module RevistaFestaJa
 	
 	config.autoload_paths += %W(#{Rails.root}/lib)
 
+	config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
 	#config.serve_static_assets = true
 
 	#config.assets.initialize_on_precompile = false
