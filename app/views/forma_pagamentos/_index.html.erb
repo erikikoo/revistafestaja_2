@@ -1,6 +1,11 @@
+<% if notice %>
+  <p id="notice" class='alert alert-success'><%= notice %></p>
+<% end %> 
 
-<p id="notice" class='alert alert-success'><%= notice %></p>
-
+<ol class="breadcrumb">
+  <li><%= link_to 'Administrador', admin_path  %></li>
+  <li>Forma de Pagamento</li>    
+</ol>
 
 <%= link_to raw("<i class='glyphicon glyphicon-plus'></i>"), new_forma_pagamento_path, class: 'btnAdd btnNew btn btn-primary', remote: true%>
 

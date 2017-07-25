@@ -96,9 +96,7 @@ class VendasController < ApplicationController
   end
 
   
-  def gera_parcelas
-    #valor = params[:valor]
-    #@parcelas = GeraParcelas.new(valor).gera_parcelas
+  def gera_parcelas    
     @venda = Venda.new
     respond_to do |format|
       format.js {render :parcelas, f: @venda}
@@ -107,8 +105,7 @@ class VendasController < ApplicationController
 
   def get_valor      
      valor = Produto.find(params[:id])     
-     @valor = total_valor(valor.valors.last.preco)
-     #@valor = valor.valors.last.preco
+     @valor = total_valor(valor.valors.last.preco)     
      respond_to do |format|
       format.js { render :valor_total}
     end
