@@ -7,6 +7,9 @@ class VendasController < ApplicationController
   layout 'admin'
 
   before_action :authenticate_user!
+  
+  require ('lib/gera_codigo_venda')
+
   # GET /vendas
   # GET /vendas.json
   def index
@@ -132,7 +135,7 @@ class VendasController < ApplicationController
     def gera_codigo
       last_cod               = Venda.select("codigo").last
       @new_cod               = GeraCodigoVenda.new(last_cod).gera_codigo
-     
+
     end
 
     def get_cliente
