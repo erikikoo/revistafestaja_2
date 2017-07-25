@@ -17,7 +17,7 @@ module RevistaFestaJa
 	
 	config.autoload_paths += %W(#{config.root}/lib)
 
-	config.serve_static_assets = true
+	#config.serve_static_assets = true
 
 	#config.assets.initialize_on_precompile = false
   end
