@@ -13,9 +13,9 @@
 	<% @cliente.enderecos.each do |e|%>
 								
 		<%= e.end unless e.end.blank? %>
-		
-		<%= e.numero ? ' - s/n' : ' - ' + e.numero %>		
-		
+		<% unless e.end.blank? %>
+			<%= e.numero ? ' - s/n' :  "-  #{e.numero}" %>		
+		<% end %>
 		<%= ' - ' + e.complemento unless e.complemento.blank?  %>
 									
 	<% end %>
