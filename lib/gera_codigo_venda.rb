@@ -9,7 +9,7 @@ class GeraCodigoVenda
 	end
 
 	def gera_codigo
-		last_cod = @last_cod.cod.to_s[-4..-1].to_i 
+		last_cod = @last_cod.codigo.to_s[-4..-1].to_i 
     	last_cod += 1
     	 num = completa_zeros(last_cod,4)
 	     ano = get_year	     

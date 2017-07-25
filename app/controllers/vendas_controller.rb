@@ -29,7 +29,7 @@ class VendasController < ApplicationController
     @meses                 = Mes.new.meses    
     @mes                   = @meses[Time.new.month-1]
     
-    @venda.n_parcelas      = 1 
+    #@venda.n_parcelas      = 1 
     @venda.codigo          = @new_cod
     @venda.cliente_id      = @cliente.id    
   end
