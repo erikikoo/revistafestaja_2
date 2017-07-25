@@ -25,6 +25,8 @@
 
 
 jQuery(document).ready(function($) {
+  $('.btn-topo').css('display', 'none');
+
  //ao Realizar pesquisa scrola para topo  
    $("#cliente_search").submit(function(event) {
      $('html body').animate({scrollTop: 0}, 800);
@@ -41,6 +43,7 @@ jQuery(document).ready(function($) {
 
 // apresenta o botão de retornar no topo quando scrola pag
   $(window).scroll(function(){
+    
     if($(this).scrollTop() > 300) {
       $('.btn-topo').fadeIn('fast');
     } else {
