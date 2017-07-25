@@ -22,7 +22,7 @@ body {
 #index-cliente-btn {
     position: fixed;
     z-index: 99;
-    
+    top: 350px;
 }
 #index-clientes {
     top: 60px !important;
@@ -49,6 +49,7 @@ body {
 
 #search-form{ 
     opacity: 1;
+    
 }
 
 .item {        
@@ -110,9 +111,11 @@ body {
 
 #container-search {
    padding: 40px;
-   background-image: url('topo.jpg');
+   background-image: url('http://res.cloudinary.com/dgql7hcka/image/upload/v1501018491/Revista Festa Ja/topo.jpg');
    width: 100%;
    height: 359px;
+   background-position: center;
+   background-repeat: no-repeat;
 
 }
 
