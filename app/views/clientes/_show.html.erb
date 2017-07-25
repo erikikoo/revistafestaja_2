@@ -34,14 +34,12 @@
 	<strong>Contatos: </strong>
 	<br />
 	<% @cliente.contatos.each do |c|%>
-		<% if c.whatsapp %>
-			<i class="fa fa-whatsapp" aria-hidden="true"></i>
-			<%= c.numero %> <br />
-		<% end %>
-		<% if c.whatsapp != true %>
+		<% if c.whatsapp == '1' %>
+			<i class="fa fa-whatsapp fa-5x" aria-hidden="true"></i>
+		<% else %>								
 			<i class="fa fa-phone" aria-hidden="true"></i>
-			<%= c.numero %> <br />
-	    <% end %>	
+		<% end %>	
+		<%= c.numero %> <br />	
 						
 	<% end %>
 </p>
