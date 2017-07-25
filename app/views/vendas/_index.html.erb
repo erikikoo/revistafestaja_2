@@ -45,9 +45,9 @@
         <td><%= venda.valor_total %></td>        
         <td><%= venda.forma_pagamento.descricao %></td>
         <td>
-            <%= link_to 'Detalhes', "venda/show/#{venda.id}",remote: true, class: 'btn btn-default btn-sm' %>
-            <%= link_to 'Editar', edit_venda_path(venda),remote: true, class: 'btn btn-default btn-sm' %>
-            <%= link_to 'Apagar', venda, method: :delete, remote: true,data: { confirm: 'Deseja continuar?' }, class: 'btn btn-danger btn-sm' %>
+            <%= link_to 'Detalhes', "venda/show/#{venda.id}",remote: true, class: 'btn btn-default btn-xs' %>
+            <%= link_to 'Editar', edit_venda_path(venda),remote: true, class: 'btn btn-default btn-xs' %>
+            <%= link_to 'Apagar', venda, method: :delete, remote: true,data: { confirm: 'Deseja continuar?' }, class: 'btn btn-danger btn-xs' %>
         </td>
       </tr>
     <% end %>
