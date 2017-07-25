@@ -12,7 +12,7 @@
 
 body {
     background: #e9ebee;
-    height: 2000px;
+    
 }
 
 a:link, a:hover, a:visited {
@@ -93,22 +93,26 @@ a:link, a:hover, a:visited {
 
 }
 .btn-topo {
-    &:before {
-        content: '^';
+    &:before {        
         font-size: 3rem;
         color: #fff;
-        top: 18px;
-        left:12px;        
+        top: 7px;
+        left:10px;        
         position: relative;
     }
-    &:hover {
+    &:hover, &:visited, &:active, &:hover, &:focus {
         text-decoration: none;  
     }
+    
 
 }
 
 .btn-topo:hover {
     background-color: rgba(40, 40, 40, 1);
+}
+
+#container-search {
+    margin: 40px;
 }
 
 @media only screen and (max-width: 399px) {
@@ -119,6 +123,19 @@ a:link, a:hover, a:visited {
     #timeline[data-columns]::before {
         content: '1 .column.size-1of1';
     }
+
+    #container-search {
+        width: 90%;
+        position: relative;
+        margin: 40px auto;
+        
+    }
+
+    #index-clientes {
+        width: 90% !important;   
+        margin: 60px auto;     
+    }
+
  
 }
 
