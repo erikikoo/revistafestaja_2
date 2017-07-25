@@ -8,7 +8,7 @@ class VendasController < ApplicationController
 
   before_action :authenticate_user!
   
-  require ('lib/gera_codigo_venda')
+  require ('lib/gera_codigo_venda.rb')
 
   # GET /vendas
   # GET /vendas.json
