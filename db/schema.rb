@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(version: 20170721154400) do
 
   create_table "contatos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "numero",     limit: 15
-    t.string   "whatsapp"
+    t.boolean  "whatsapp",              default: false
     t.integer  "cliente_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.index ["cliente_id"], name: "index_contatos_on_cliente_id", using: :btree
   end
 
@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(version: 20170721154400) do
     t.integer  "cliente_id"
     t.string   "edicao"
     t.float    "valor_total",        limit: 24
-    t.integer  "codigo"
+    t.string   "codigo",             limit: 11
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "forma_pagamento_id"
