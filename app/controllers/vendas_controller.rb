@@ -58,7 +58,7 @@ class VendasController < ApplicationController
       ven = Time.new + 7.days
       parcelas.vencimento = ven
     end    
-    @venda.cod = @new_cod
+    @venda.codigo = @new_cod
     respond_to do |format|
       if @venda.save!             
         format.js { redirect_to clientes_path, notice: 'Venda criada com sucesso!' }
