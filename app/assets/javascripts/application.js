@@ -25,48 +25,48 @@
 
 
 jQuery(document).ready(function($) {
-//  //ao Realizar pesquisa scrola para topo  
-//    $("#cliente_search").submit(function(event) {
-//      $('html body').animate({scrollTop: 0}, 800);
+ //ao Realizar pesquisa scrola para topo  
+   $("#cliente_search").submit(function(event) {
+     $('html body').animate({scrollTop: 0}, 800);
       
   
-//    });
-//    //ao clicar no btn scrola para topo  
-//    $('.btn-topo').click(function(){     
-//     $('html body').animate({scrollTop: 0}, 800);
-//     return false;
-//   });  
+   });
+   //ao clicar no btn scrola para topo  
+   $('.btn-topo').click(function(){     
+    $('html body').animate({scrollTop: 0}, 800);
+    return false;
+  });  
 
 	
 
-// // apresenta o botão de retornar no topo quando scrola pag
-//   $(window).scroll(function(){
-//     if($(this).scrollTop() > 300) {
-//       $('.btn-topo').fadeIn('fast');
-//     } else {
-//       $('.btn-topo').fadeOut('fast');
-//     }
+// apresenta o botão de retornar no topo quando scrola pag
+  $(window).scroll(function(){
+    if($(this).scrollTop() > 300) {
+      $('.btn-topo').fadeIn('fast');
+    } else {
+      $('.btn-topo').fadeOut('fast');
+    }
 
-//     if($(this).scrollTop() > 50) {
-//     //apresenta e esconde o search menu  se o scroll for maioir que o valor acima
-//       apagaFieldSearch('.4');
-//       mostraFieldSearch('1');      
-//      // se o campo de pesquisa estiver  selecionado não esconde o mesmo
-//       if(!$('#q_razao_social_cont').is(':focus')) {    
-//         $('#index-cliente-btn').css({
-//           opacity: '.4'
-//         });      
-//       }  
+    if($(this).scrollTop() > 50) {
+    //apresenta e esconde o search menu  se o scroll for maioir que o valor acima
+      apagaFieldSearch('.4');
+      mostraFieldSearch('1');      
+     // se o campo de pesquisa estiver  selecionado não esconde o mesmo
+      if(!$('#q_razao_social_cont').is(':focus')) {    
+        $('#index-cliente-btn').css({
+          opacity: '.4'
+        });      
+      }  
       
 
-//     } else {     
-// 	   	$('#index-cliente-btn').css({    	    	  	
-//     	  	opacity: '1'
-//     	});
-//       apagaFieldSearch('1');
+    } else {     
+	   	$('#index-cliente-btn').css({    	    	  	
+    	  	opacity: '1'
+    	});
+      apagaFieldSearch('1');
 	   	
-//     }
-//   });
+    }
+  });
         
 // painel mensagem
 	$("#notice").fadeTo(2000, 500).slideUp(500, function(){
