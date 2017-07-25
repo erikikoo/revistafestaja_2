@@ -57,8 +57,7 @@ class VendasController < ApplicationController
       parcelas.valor = @venda.valor_total
       ven = Time.new + 7.days
       parcelas.vencimento = ven
-    end
-    @venda.n_parcelas = 1 if @venda.forma_pagamento_id.eql?(1) 
+    end    
     @venda.cod = @new_cod
     respond_to do |format|
       if @venda.save!             
@@ -150,6 +149,6 @@ class VendasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def venda_params
-      params.require(:venda).permit(:user_id, :cliente_id,  :forma_pagamento_id, :edicao, :valor_total, :n_parcelas, :codigo, :produto_ids, parcelas_attributes: [:_destroy,:venda_id, :valor, :vencimento, :status])
+      params.require(:venda).permit(:user_id, :cliente_id,  :forma_pagamento_id, :edicao, :valor_total, :codigo, :produto_ids, parcelas_attributes: [:_destroy,:venda_id, :valor, :vencimento, :status])
     end
 end
