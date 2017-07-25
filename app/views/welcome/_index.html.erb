@@ -20,26 +20,15 @@
 							<hr />
 							<h6><strong>Contato</strong></h6>
 							<% cliente.contatos.each do |c|%>
-								<% if c.whatsapp %>
+								<% if c.whatsapp == '1' %>
 									<i class="fa fa-whatsapp fa-5x" aria-hidden="true"></i>
-									<%= c.numero %> <br />
-								<% end %>
-								<% if c.whatsapp != true %>
+								<% else %>								
 									<i class="fa fa-phone" aria-hidden="true"></i>
-									<%= c.numero %> <br />
 								<% end %>	
+								<%= c.numero %> <br />
 										
 							<% end %>
-								<!-- <hr />
-								<h6><strong>Endereço</strong></h6>				
-								<% cliente.enderecos.each do |e|%>
-										
-									<%= e.end unless e.end.blank? %>		
-									<%= e.numero.blank? ? 's/n' : ' - ' + e.numero %>
-									<%= '- ' +  e.complemento unless e.complemento.blank?  %>
-											
-								<% end %> -->
-							
+								
 							</div>	
 					</div>
 				
