@@ -15,7 +15,7 @@ module RevistaFestaJa
 	
 	config.i18n.default_locale = 'pt-BR'
 	
-	config.autoload_paths += %W(#{Rails.root}/lib)
+	config.autoload_paths << "#{Rails.root}/lib"
 
 	#config.serve_static_assets = true
 
