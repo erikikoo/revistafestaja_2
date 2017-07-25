@@ -132,6 +132,7 @@ class VendasController < ApplicationController
     def gera_codigo
       last_cod               = Venda.select("codigo").last
       @new_cod               = GeraCodigoVenda.new(last_cod).gera_codigo
+     
     end
 
     def get_cliente

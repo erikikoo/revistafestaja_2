@@ -9,7 +9,7 @@ class GeraCodigoVenda
 	end
 
 	def gera_codigo
-		if @last_cod.codigo.empty? 
+		unless @last_cod.codigo.nil? 
 			last_cod = @last_cod.codigo.to_s[-4..-1].to_i 
     	end
     	
