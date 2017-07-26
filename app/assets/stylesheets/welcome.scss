@@ -186,7 +186,7 @@ body {
 @media (min-width: 400px) and (max-width: 415px) {
     #q_razao_social_cont {
         display: inline;
-        width: 58vw;
+        width: 53vw;
     }
     .btn-search {
         width: 21vw;
@@ -204,14 +204,14 @@ body {
 @media only screen and (min-width: 500px) {
     #q_razao_social_cont {
         display: inline;
-        width: 67vw;
+        width: 63vw;
     }
 }
 
 @media (min-width: 500px) and (max-width: 521px) {
     #q_razao_social_cont {
         display: inline;
-        width: 65vw;
+        width: 62vw;
     }
 }
 
@@ -222,7 +222,7 @@ body {
     }
     #q_razao_social_cont {
         display: inline;
-        width: 71vw;
+        width: 70vw;
     }
     #timeline[data-columns]::before {
         content: '3 .column.size-1of3';
@@ -241,7 +241,7 @@ body {
     width: 10vw;
     }
     #q_razao_social_cont {
-        width: 80vw;
+        width: 78vw;
     }
     #timeline[data-columns]::before {
         content: '4 .column.size-1of4';
