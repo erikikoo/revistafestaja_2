@@ -50,10 +50,22 @@ jQuery(document).ready(function($) {
       $('.btn-topo').fadeOut('fast');
     }
 
-    if($(this).scrollTop() > 50) {
+    if($(this).scrollTop() > 290) {
     //apresenta e esconde o search menu  se o scroll for maioir que o valor acima
       apagaFieldSearch('.4');
-      mostraFieldSearch('1');      
+      mostraFieldSearch('1');    
+
+      // fixa o campo pesquisa no topo
+      // $('#index-cliente-btn').css({
+      //   position: 'fixed',
+      //   padding: '30px',                
+      //   height: '100px',
+      //   background: 'tomato',
+      //   top: '0px',
+      //   margin: '0 auto',
+      //   left: '0',
+      //   width: '100%'
+      // });  
      // se o campo de pesquisa estiver  selecionado não esconde o mesmo
       if(!$('#q_razao_social_cont').is(':focus')) {    
         $('#index-cliente-btn').css({
@@ -63,11 +75,19 @@ jQuery(document).ready(function($) {
       
 
     } else {     
-	   	$('#index-cliente-btn').css({    	    	  	
+	   	
+      $('#index-cliente-btn').css({    	    	  	
     	  	opacity: '1'
     	});
+      
       apagaFieldSearch('1');
-	   	
+	   	// volta o campo pesquisa
+      // $('#index-cliente-btn').css({
+      //   position: 'relative',
+      //   top: '300px',
+      //   background: 'none',
+      //   padding: '0',
+      // });
     }
   });
         

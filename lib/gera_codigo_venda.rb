@@ -16,6 +16,7 @@ class GeraCodigoVenda
     	end
     	
     	 last_cod += 1
+    	 
     	 num = completa_zeros(last_cod,4)
 	     ano = get_year	     
 	     mes = completa_zeros(get_month.to_i,2)
