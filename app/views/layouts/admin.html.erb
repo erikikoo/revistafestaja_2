@@ -6,14 +6,22 @@
     
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %>
-    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %>
     <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' %>
-
+    
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
+    
+    <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js' %>
+    
     <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.min.js" %>
     
+    <%= stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons' %>
+  
+
   </head>
 
   <body>    
@@ -22,12 +30,12 @@
         
       </div>
       <div class="dados-user text-right">
-        <i class='glyphicon glyphicon-user'></i>
-        <%= current_user.email %>
-        <%= link_to raw("<i class='glyphicon glyphicon-off'></i>"), destroy_user_session_path, method: :delete %>
+        <i class='material-icons medium'>person</i>
+        <span><%= current_user.email %></span>
+        <%= link_to raw("<i class='material-icons medium'>power_settings_new</i>"), destroy_user_session_path, method: :delete %>
       </div>
     </header>
-    <div id="admin-modal" class="modal fade"></div>
+    <div id="admin-modal" class="modal"></div>
     <div class="menu">
       <%= render 'administrador/menu' %>      
     </div>

@@ -8,6 +8,7 @@ class ProdutosController < ApplicationController
   # GET /produtos.json
   def index
     @produtos = Produto.all
+    @produtos_count = Produto.count
   end
 
   # GET /produtos/1
@@ -69,6 +70,7 @@ class ProdutosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_produto
+      
       @produto = Produto.find(params[:id])
     end
 

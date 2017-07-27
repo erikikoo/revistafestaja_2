@@ -1,8 +1,8 @@
 	<%= search_form_for(@q, url: '/search', :method => :post, remote: true, class: 'form-inline') do |f| %>	  
 	  <div id='search-form'>			
-		  <%= f.search_field :razao_social_cont, class: 'form-control', placeholder: 'O que procura? ' %>
+		  <%= f.search_field :razao_social_cont, class: 'form-control', placeholder: 'O que procura? ' %>		
 		  
-		  <%= f.submit "Pesquisar", class: 'btn btn-default btn-search' %>
+		  <%= f.submit 'search', class: 'btn btn-default btn-search material-icons' %>
 		  
 	  </div>
 	<% end %>

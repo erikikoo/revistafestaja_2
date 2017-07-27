@@ -1,5 +1,5 @@
 class ParcelasController < ApplicationController
-  before_action :set_parcela, only: [:show, :edit, :update, :destroy]
+  before_action :set_parcela, only: [:show, :edit, :update, :destroy, :baixar_parcela, :reabrir_parcela]
 
   # GET /parcelas
   # GET /parcelas.json
@@ -19,6 +19,11 @@ class ParcelasController < ApplicationController
 
   # GET /parcelas/1/edit
   def edit
+    @action = 'update'
+    @parcela = Parcela.new
+    respond_to do |format|
+      format.js { render :new, location: @parcela}
+    end
   end
 
   # POST /parcelas
@@ -42,22 +47,41 @@ class ParcelasController < ApplicationController
   def update
     respond_to do |format|
       if @parcela.update(parcela_params)
-        format.html { redirect_to @parcela, notice: 'Parcela was successfully updated.' }
-        format.json { render :show, status: :ok, location: @parcela }
+        format.html { redirect_to clientes_path, notice: 'Parcela atualizada' }
+        
       else
         format.html { render :edit }
-        format.json { render json: @parcela.errors, status: :unprocessable_entity }
+        
       end
     end
   end
 
+  def baixar_parcela    
+      respond_to do |format|
+        if @parcela.update_attributes(status: true)
+            format.html { redirect_to vendas_path, notice: 'Parcela atualizada com sucesso!' }
+        else
+            format.html { render :new }        
+        end
+      end
+  end
+
+  def reabrir_parcela
+    respond_to do |format|
+      if @parcela.update_attributes(status: false)
+            format.html { redirect_to vendas_path, notice: 'Parcela atualizada com sucesso!' }
+      else
+            format.html { render :new }        
+      end
+    end
+  end
   # DELETE /parcelas/1
   # DELETE /parcelas/1.json
   def destroy
     @parcela.destroy
     respond_to do |format|
       format.html { redirect_to parcelas_url, notice: 'Parcela was successfully destroyed.' }
-      format.json { head :no_content }
+      
     end
   end
 

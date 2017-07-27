@@ -46,7 +46,7 @@ class ClientesController < ApplicationController
         @action = 'success'        
         @cliente_segmento = @cliente.cliente_segmentos.new 
         format.html { redirect_to clientes_path, notice: 'Cliente criado com sucesso!' }
-       
+        #redirect_to({action: 'index'}, notice: 'Cliente criado com sucesso!')
       else
         @text = "Opss! ocorreu um erro!"
         @action = 'danger'
@@ -103,6 +103,7 @@ class ClientesController < ApplicationController
   private
       
     def get_all
+      @clientes_count = Cliente.count
       @clientes = Cliente.order(:razao_social).page params[:page]
     end
 

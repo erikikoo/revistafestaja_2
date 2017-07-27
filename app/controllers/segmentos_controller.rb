@@ -57,10 +57,11 @@ class SegmentosController < ApplicationController
   # PATCH/PUT /segmentos/1.json
   def update
     respond_to do |format|
-      if @segmento.update(segmento_params)        
+      if @segmento.update(segmento_params) 
+        @status = 'green'       
         format.js { redirect_to segmentos_path, notice: 'Segmento atualizado com secesso!' }        
       else
-        
+        @status = 'red'       
         format.js { render :new, notice: 'Opss! ocorreu um erro.' }
         
       end
@@ -88,7 +89,8 @@ class SegmentosController < ApplicationController
 
   private
     def get_all_segmentos
-      @segmentos = Segmento.all
+      @segmento_count = Segmento.count
+      @segmentos = Segmento.page(params[:page]).per(15)
     end
 
     # Use callbacks to share common setup or constraints between actions.

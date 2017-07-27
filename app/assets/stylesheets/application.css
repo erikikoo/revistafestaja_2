@@ -34,3 +34,27 @@ input[type=number] {
     -moz-appearance:textfield;
 }
 
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+	position: relative !important;
+	left: 18px !important;
+	z-index: 9999;
+	top: -3px !important;
+	opacity: 1 !important;
+}
+
+[type="checkbox"]:checked+label:before {
+	top: 0 !important;
+}
+
+.pagination {
+	margin: 20px auto !important;
+	width: 100% !important;
+}
+
+.breadcrumb>li {
+	color: #666 !important;
+}
+
+.btn-group-xs>.btn, .btn-xs {
+	padding: 6px 12px !important;
+}

@@ -8,6 +8,13 @@
 </ol>
 <%= link_to raw("<i class='glyphicon glyphicon-plus'></i>"), new_produto_path, class: 'btn btn-primary btnAdd btnNew', remote: true %>
 
+<p>
+  <hr />
+    Total de <%= @produtos_count %>
+  <hr />
+</p>
+
+
 <table class='table table-hover'>
   <thead>
     <tr>

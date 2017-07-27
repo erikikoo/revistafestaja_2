@@ -32,16 +32,30 @@
   <br/ >
   <table class='table-show-parc'>
     <% i = 1 %>
-    <% @venda.parcelas.each do |par|%>
-      <tr>
-        
-        <td>parcela: <%= i %></td>
-        <td>Valor: <%= par.valor %></td>
-        <td>Vencimento: <%= par.vencimento %></td>
-      </tr>
-      <% i += 1%>
-    <% end %> 
     
+      <% @venda.parcelas.each do |par|%>
+        <tr>
+          
+          <td>parcela: <%= i %></td>
+          <td>Valor: <%= par.valor %></td>
+          <td>
+              Vencimento: <%= I18n.l(par.vencimento) %>              
+          </td>
+          <td class='text-center'>
+          <% if par.status.eql?(true) %> 
+            <% route  = 'reabrir-parcela' %> 
+            <% classe = 'btn-success' %>
+            <% valor  = 'Reabrir Parcela'%>
+          <% else %>
+            <% classe = 'btn-default' %>
+            <% route  = 'baixar-parcela' %> 
+            <% valor  = 'Baixar Parcela' %>
+          <% end %>  
+          <%= link_to "#{valor}", "/#{route}/#{par.id}", method: :put, class: "btn btn-xs #{classe}", data: { confirm: 'Deseja proseguir?' } %></td>
+        </tr>
+        <% i += 1%>
+      
+    <% end %> 
   </table>
 </p>
 

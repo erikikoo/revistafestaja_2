@@ -14,6 +14,7 @@ class VendasController < ApplicationController
   # GET /vendas
   # GET /vendas.json
   def index
+    @vendas_count = Venda.count
     @vendas = Venda.order(:codigo).page params[:page]
     @q = Venda.ransack(params[:q])
     @vendas = @q.result.page(params[:page])         
@@ -23,6 +24,7 @@ class VendasController < ApplicationController
   # GET /vendas/1.json
   def show
     @action = 'show'
+    @parcelas = Parcela.new
   end
 
   # GET /vendas/new

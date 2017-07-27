@@ -1,41 +1,37 @@
 	
 <div id='timeline' data-columns>
-		<% if @clientes.empty?%>
-				<h4>Ops!! Não encontramos</h4>				
-		<% else %>				
+	<% if @clientes.empty?%>
+		<h4>Ops!! Não encontramos</h4>				
+	<% else %>				
 					
-			<% @clientes.each do |cliente|%>					
+		<% @clientes.each do |cliente|%>					
 					
-					<div class='item'>
-							<div class='cliente-index-logo'>						
-								<img src="http://via.placeholder.com/250x220" alt="" class='img-responsive'>
-							</div>
-							<div class="cliente-index-conteudo">
-								<h5 class='text-center'><%= cliente.razao_social %></h5>
-																
-							<h6><strong>Segmento</strong></h6>
-							<% cliente.segmentos.each do |s|%>
-								<i class="glyphicon glyphicon-ok"></i><%= s.descricao %> <br />
-							<% end %>
-							<hr />
-							<h6><strong>Contato</strong></h6>
-							<% cliente.contatos.each do |c|%>
-								<% if c.whatsapp == '1' %>
-									<i class="fa fa-whatsapp fa-5x" aria-hidden="true"></i>
-								<% else %>								
-									<i class="fa fa-phone" aria-hidden="true"></i>
-								<% end %>	
-								<%= c.numero %> <br />
+			<div class='item'>
+				<div class='cliente-index-logo'>						
+					<img src="http://via.placeholder.com/250x220" alt="" class='img-responsive'>
+				</div>
+				<div class="cliente-index-conteudo">
+					<h5 class='text-center'><%= cliente.razao_social %></h5>
+															
+					<h6><strong>Segmento</strong></h6>
+					<% cliente.segmentos.each do |s|%>
+						<i class="glyphicon glyphicon-ok"></i><%= s.descricao %> <br />
+					<% end %>
+					<hr />
+					<h6><strong>Contato</strong></h6>
+					<% cliente.contatos.each do |c|%>
+						<% if c.whatsapp == '1' %>
+							<i class="fa fa-whatsapp fa-5x" aria-hidden="true"></i>
+						<% else %>								
+							<i class="fa fa-phone" aria-hidden="true"></i>
+						<% end %>	
+						<%= c.numero %> <br />
 										
-							<% end %>
-								
-							</div>	
-					</div>
-				
-				
-				<% end %>
-			
+					<% end %>							
+				</div>	
+			</div>				
 		<% end %>			
+	<% end %>			
 </div>	
 
 <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/salvattore/1.0.9/salvattore.min.js" %>  

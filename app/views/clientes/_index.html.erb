@@ -1,6 +1,5 @@
-
 <% if notice %>
-  <p id="notice" class='alert alert-success'><%= notice %></p>
+    <%= javascript_tag "Materialize.toast('#{notice}', 8000)" %>
 <% end %>  
 
 <ol class="breadcrumb">
@@ -20,8 +19,9 @@
       <th colspan="2"></th>
     </tr>
   </thead>
-
+  
   <tbody id='clientes'>
+    total de <%= @clientes_count%>
     <%= render partial: 'clientes/clientes_all' %>
   </tbody>
 </table>

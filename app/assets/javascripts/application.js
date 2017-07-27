@@ -11,16 +11,19 @@
 // about supported directives.
 //
 //= require jquery
+// require materialize-sprockets
 //= require twitter/bootstrap
-//= require twitter/bootstrap/modal
 //= require maskedinput
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR.js
 //= require jquery_ujs
 //= require turbolinks
+//= require data-confirm-modal
 // require jquery.turbolinks
 //= require cocoon
+//= require twitter/bootstrap/modal
 //= require_tree .
+
 
 
 
@@ -115,6 +118,12 @@ jQuery(document).ready(function($) {
   $('#artist_data_phones_attributes_0_telefone').mask(SPMaskBehavior, spOptions);
   $('#commitment_telefone').mask(SPMaskBehavior, spOptions);
   
+
+  dataConfirmModal.setDefaults({
+    title: 'Atenção',
+    commit: 'Confirmar',
+    cancel: 'Cancelar'
+  });
  
 });
 

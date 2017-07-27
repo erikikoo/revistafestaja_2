@@ -1,5 +1,5 @@
-<% if notice %>
-  <p id="notice" class='alert alert-success'><%= notice %></p>
+<% if notice %>  
+    <%= javascript_tag "Materialize.toast('#{notice}', 8000)" %>  
 <% end %>  
 
 <ol class="breadcrumb">
@@ -8,7 +8,15 @@
 </ol>
 
 <%= link_to raw("<i class='glyphicon glyphicon-plus'></i>"), new_segmento_path, class: 'btn btn-primary btnAdd btnNew', remote: true %>
+<p>
+  <hr />
+  total de <%= @segmento_count %>  
+  <hr />
+</p>
+    
 
+
+<%= paginate @segmentos, :theme => 'twitter-bootstrap-3',:pagination_class => "pagination-sm" %>
 
 <table class='table table-striped'>
   <thead>
@@ -31,6 +39,6 @@
     <% end %>
   </tbody>
 </table>
-
+<%= paginate @segmentos, :theme => 'twitter-bootstrap-3',:pagination_class => "pagination-sm" %>
 <br>
 

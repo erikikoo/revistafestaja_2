@@ -33,5 +33,8 @@ Rails.application.routes.draw do
   get '/reloadParcelas'             =>'vendas#gera_parcelas'
   get '/reloadTotal'                =>'vendas#get_valor'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  put '/baixar-parcela/:id'          =>'parcelas#baixar_parcela'
+  put '/reabrir-parcela/:id'         =>'parcelas#reabrir_parcela'
+  
+  
 end

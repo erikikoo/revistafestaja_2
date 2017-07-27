@@ -1,0 +1,13 @@
+<%= simple_form_for(@parcela, remote: true) do |f|%>
+  <div class="form-inputs">
+    
+    <%= f.input :valor %>
+    <%= f.input :vencimento %>
+    <%= f.input :status %> Whatsapp
+  </div>
+<%= f.button :submit %>
+  <div class="actions">
+    <%= link_to_remove_association "remove", f %>
+  </div>
+
+<% end %>

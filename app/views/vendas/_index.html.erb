@@ -1,5 +1,5 @@
 <% if notice %>
-  <p id="notice" class='alert alert-success'><%= notice %></p>
+    <%= javascript_tag "Materialize.toast('#{notice}', 4000)" %>
 <% end %>
 
 <ol class="breadcrumb">
@@ -15,6 +15,13 @@
     <%= render 'search' %>    
   </span>
 </div>
+
+<hr />
+<p>
+  Total de <%= @vendas_count %>  
+</p>
+<hr />
+
 <table class='table table-striped'>
   <thead>
     <tr>      
