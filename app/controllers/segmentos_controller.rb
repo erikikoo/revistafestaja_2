@@ -39,13 +39,11 @@ class SegmentosController < ApplicationController
     respond_to do |format|
       if @segmento.save
         @cliente = Cliente.new        
-        if @action
-          format.js {redirect_to segmentos_path, location: @cliente, notice: 'Segmento criado com sucesso!' }
-        else
-          format.js { render :index, notice: 'Opss! ocorreu um erro.' }
-        end
-        #format.html { redirect_to new_cliente_path, notice: 'Segmento was successfully created.' }        
-
+        #if @action
+          format.html {redirect_to segmentos_path, location: @cliente, notice: 'Segmento criado com sucesso!' }
+        #else
+        #  format.js { render :index, notice: 'Opss! ocorreu um erro.' }
+        #end
       else
         format.js { render :new }
         

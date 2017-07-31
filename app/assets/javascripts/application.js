@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-// require materialize-sprockets
+//= require materialize-sprockets
 //= require twitter/bootstrap
 //= require maskedinput
 //= require bootstrap-datepicker
