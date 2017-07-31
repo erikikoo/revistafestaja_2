@@ -16,7 +16,7 @@
         </td>
         <td><%= cliente.publicar ? 'publicado': ''  %></td>
         <td>
-          <% if cliente.publicar %>
+          <% if cliente.publicar  %>
             <%= link_to 'Vender', "/vendas/#{cliente.id}/cliente", class: 'btn btn-success btn-xs', remote: true %>
           <% end %>
           <%= link_to 'Detalhes', cliente, class: 'btn btn-default  btn-xs', remote: true %>

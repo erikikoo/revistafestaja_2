@@ -1,5 +1,5 @@
 <% if notice %>
-  <p id="notice" class='alert alert-success'><%= notice %></p>
+    <%= javascript_tag "Materialize.toast('#{notice}', 8000)" %>
 <% end %> 
 
 <ol class="breadcrumb">
