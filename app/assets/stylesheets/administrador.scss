@@ -83,3 +83,16 @@ header {
 		background-color: transparent;
 	}
 }
+
+.painel-graficos {	
+	width: 100%;	
+	display: inline-flex;
+	padding: 0 20px;
+	
+	#columnchart_material_valor_vendas {
+		position: relative;
+		left: -40px;
+
+	}
+
+}

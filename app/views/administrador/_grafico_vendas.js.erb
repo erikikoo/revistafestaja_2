@@ -1,0 +1,37 @@
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        
+        var data = google.visualization.arrayToDataTable([
+          ['Mês', 'Vendas'],
+          <% @vendas.each do |k,v| %>
+            [ '<%= converte_mes(k) %>', <%= v %>],
+          <% end %>
+        ]);
+
+
+        var options = {
+          chart: {
+            title: 'Vendas'
+            
+          },
+          bars: 'vertical',
+          vAxis: {format: 'decimal'},
+          height: 300,
+          width: 400,
+          legend: { position: 'none' },
+          colors: ['#8A8ABE']
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material_vendas'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+  
+  // pequisa e agrupa por mes e soma valor das vendas
+  //Venda.where("extract( month from created_at) = ?", Time.new.month).group('extract( month from created_at)').sum('valor_total')
+      }
+    </script>
+
+  

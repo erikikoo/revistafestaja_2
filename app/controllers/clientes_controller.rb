@@ -16,7 +16,7 @@ class ClientesController < ApplicationController
   # GET /clientes/1
   # GET /clientes/1.json
   def show
-    @action ; 'show'
+    @action = 'show'
   end
 
   # GET /clientes/new

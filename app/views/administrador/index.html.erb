@@ -1,4 +1,35 @@
 <% if notice %>
   <%= javascript_tag "Materialize.toast('#{notice}', 8000)" %>
 <% end %>
-	
+<head>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>    
+      <% if @parcelas_atrasadas_count > 0 %>
+        <fieldset>
+        	<legend>Parcelas Vencidas</legend>
+        	   <div class="alert alert-danger">
+                Existem <%= @parcelas_atrasadas_count %> parcelas em aberto
+                <%= link_to 'Detalhes', "#collapseParcelasAdm", role: :button,
+                      data: { parent: '#accordion', toggle: :collapse},
+                      aria: { controls: :collapseOne, expanded: false }, class: 'alert-link'  %>
+              </div>
+
+               <div class="collapse" id="collapseParcelasAdm">
+                <%= render 'parcelas_atrasadas' %>		
+              </div>
+        </fieldset>
+	   <% end %>
+		<fieldset>
+			<legend>Visão Total</legend>
+		    <%= render 'grafico_valor_em_vendas.js' %>
+		    <%= render 'grafico_vendas.js' %>
+		</fieldset>
+
+  </head>
+  <body>
+  <div class="painel-graficos">
+    <span id="columnchart_material_valor_vendas" style="width: 400px; height: 200px;"></span>
+    <span id="columnchart_material_vendas" style="width: 600px; height: 300px;"></span>  	
+  </div>
+  </body>
+

@@ -6,7 +6,8 @@ class WelcomeController < ApplicationController
   end
 
   def search
-  	@q = Cliente.ransack(params[:q])
+    query = Cliente.where(publicar: true)
+  	@q = query.ransack(params[:q])
   	@clientes = @q.result()
   	
   	if @clientes.empty?
@@ -18,3 +19,4 @@ class WelcomeController < ApplicationController
     @pesq = true
   end
 end
+

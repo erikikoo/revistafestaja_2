@@ -13,7 +13,11 @@ module RevistaFestaJa
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 	
-	config.i18n.default_locale = 'pt-BR'
+	# Whitelist locales available for the application
+	config.i18n.available_locales = ['pt-BR']
+ 
+	# Set default locale to something other than :en
+	I18n.default_locale = 'pt-BR'
 	
 	config.autoload_paths += %W(#{Rails.root}/lib)
 

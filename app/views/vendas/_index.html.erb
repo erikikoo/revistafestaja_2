@@ -26,10 +26,11 @@
   <thead>
     <tr>      
       <th>Código</th>
+      <th>Vendedor</th>
       <th>Cliente</th>
       <th>Produto</th>
       <th>Edição</th>
-      <th>Valor total</th>      
+      <!--<th>Valor total</th>      -->
       <th>Forma pagmento</th>
       <th colspan="3"></th>
     </tr>
@@ -42,6 +43,7 @@
     <% @vendas.each do |venda| %>
       <tr>        
         <td><%= venda.codigo %></td>
+        <td><%= venda.user.email %></td>
         <td><%= venda.cliente.razao_social %></td>
         <td>
             <% venda.produtos.each do |p| %>
@@ -49,9 +51,14 @@
             <% end %>      
         </td>
         <td><%= venda.edicao %></td>
-        <td><%= venda.valor_total %></td>        
+        <!-- <td><%= venda.valor_total %></td>        -->
         <td><%= venda.forma_pagamento.descricao %></td>
         <td>
+            <% unless venda.cliente.publicar %>
+                <%= link_to 'Publicar', "/cliente-publicar/#{venda.cliente.id}", data: { confirm: 'Deseja proseguir?' }, class: 'btn btn-primary  btn-xs', remote: true %>
+            <% else %>
+                <%= link_to 'Despublicar', "/cliente-despublicar/#{venda.cliente.id}", data: { confirm: 'Deseja proseguir?' }, class: 'btn btn-warning  btn-xs', remote: true %>
+            <% end %>
             <%= link_to 'Detalhes', "venda/show/#{venda.id}",remote: true, class: 'btn btn-default btn-xs' %>
             <%= link_to 'Editar', edit_venda_path(venda),remote: true, class: 'btn btn-default btn-xs' %>
             <%= link_to 'Apagar', venda, method: :delete, remote: true,data: { confirm: 'Deseja continuar?' }, class: 'btn btn-danger btn-xs' %>
