@@ -11,6 +11,9 @@ User.create :email => "erikikoo@hotmail.com", :password => "HayHelena", :name =>
 User.create :email => "seudesigner@outlook.com.br", :password => "123456", :name => 'Wesley R. de Souza'
 #User.create :email => "paulinhapooh08@hotmail.com", :password => "083126", :name => 'Paula Cristina da Silva'
 #User.create :email => "paulinhapooh08", :password => "083126", :name => 'Paula Cristina da Silva'
+FormaPagamento.create :descricao => 'A Vista'
+FormaPagamento.create :descricao => 'A Prazo'
+
 # 60.times do |f|
 # 	Segmento.create! :descricao => FFaker::Job
 # end

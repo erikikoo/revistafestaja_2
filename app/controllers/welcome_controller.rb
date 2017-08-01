@@ -12,7 +12,7 @@ class WelcomeController < ApplicationController
   	
   	if @clientes.empty?
   		valor = params[:q][:razao_social_cont]
-  		s = Segmento.find_by('descricao LIKE ?',"%#{valor}%")
+  		s = Segmento.find_by('descricao ILIKE ?',"%#{valor}%")
   		s.nil? ? @clientes = '' : @clientes = s.clientes
       
   	end    

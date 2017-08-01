@@ -55,13 +55,14 @@
         <td><%= venda.forma_pagamento.descricao %></td>
         <td>
             <% unless venda.cliente.publicar %>
-                <%= link_to 'Publicar', "/cliente-publicar/#{venda.cliente.id}", data: { confirm: 'Deseja proseguir?' }, class: 'btn btn-primary btn-small', remote: true %>
+                <%= link_to raw("<i class='material-icons large'>public</i>"), "/cliente-publicar/#{venda.cliente.id}", data: { confirm: 'Deseja proseguir?' }, class: 'btn btn-primary btn-small', remote: true %>
             <% else %>
-                <%= link_to 'Despublicar', "/cliente-despublicar/#{venda.cliente.id}", data: { confirm: 'Deseja proseguir?' }, class: 'btn btn-warning btn-small', remote: true %>
+
+                <%= link_to raw("<i class='material-icons medium'>system_update_alt</i>"), "/cliente-despublicar/#{venda.cliente.id}", data: { confirm: 'Deseja proseguir?' }, class: 'btn btn-warning btn-small', remote: true %>
             <% end %>
-            <%= link_to 'Detalhes', "venda/show/#{venda.id}",remote: true, class: 'btn btn-default btn-small' %>
-            <%= link_to 'Editar', edit_venda_path(venda),remote: true, class: 'btn btn-default btn-xs' %>
-            <%= link_to 'Apagar', venda, method: :delete, remote: true,data: { confirm: 'Deseja continuar?' }, class: 'btn btn-danger btn-small' %>
+            <%= link_to raw("<i class='material-icons medium'>visibility</i>"), "venda/show/#{venda.id}",remote: true, class: 'btn btn-default btn-small' %>
+            <%= link_to raw("<i class='material-icons medium'>edit</i>"), edit_venda_path(venda),remote: true, class: 'btn btn-default btn-xs' %>
+            <%= link_to raw("<i class='material-icons medium'>delete</i>"), venda, method: :delete, remote: true,data: { confirm: 'Deseja continuar?' }, class: 'btn btn-danger btn-small' %>
         </td>
       </tr>
     <% end %>
