@@ -43,7 +43,7 @@
     <% @vendas.each do |venda| %>
       <tr>        
         <td><%= venda.codigo %></td>
-        <td><%= venda.user.email %></td>
+        <td><%= venda.user.name %></td>
         <td><%= venda.cliente.razao_social %></td>
         <td>
             <% venda.produtos.each do |p| %>
