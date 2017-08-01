@@ -15,7 +15,7 @@
 				<tr>
 					<td><%= p.venda.cliente.razao_social %></td>
 					<td><%= I18n.l(p.vencimento) %></td>
-					<td><%= I18n.t(p.valor) %></td>
+					<td><%= p.valor %></td>
 					<td>
 						<%= link_to 'Cliente', cliente_path(p.venda.cliente_id), remote: true,class: 'btn red lighten-1' %>
 					</td>

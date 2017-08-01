@@ -62,3 +62,9 @@ input[type=number] {
 .btn-group-xs>.btn, .btn-xs {
 	padding: 6px 12px !important;
 }
+
+.btn-small {
+    height: 24px !importante;
+    line-height: 24px !importante;
+    padding: 0 0.5rem !importante;
+}
