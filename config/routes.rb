@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
-  resources :parcelas
-  resources :valors
-  resources :forma_pagamentos
-  resources :produtos
+  scope '/administrador' do
+    resources :parcelas
+    resources :valors
+    resources :forma_pagamentos
+    resources :produtos
+    resources :enderecos
+    resources :contatos
+    resources :clientes
+    resources :segmentos
+    resources :vendas
+  end
+
   devise_for :users, path: 'autenticar', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secreto', confirmation: 'verificacao', unlock: 'desbloquear', registration: 'registrar', sign_up: 'cadastrar' }
-  resources :enderecos
-  resources :contatos
-  resources :clientes
-  resources :segmentos
-  resources :vendas
 
   get 'welcome/index'               => 'welcome#index'
   get '/'                           => 'welcome#index'
