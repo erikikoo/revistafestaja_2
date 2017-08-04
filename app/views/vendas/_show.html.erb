@@ -18,45 +18,53 @@
 </p>
 
 <p>
-  <strong>Valor total:</strong>
-  <%= @venda.valor_total %>
+  <strong>Desconto:</strong>
+  <%= @venda.desconto %>%
+</p>
+
+<p>
+  <strong>Valor total:</strong> R$: <%= @venda.valor_total.to_f %>
+</p>
+<p>
+  <strong>Valor com desconto:</strong> R$: <%= desconto(@venda.desconto.to_f, @venda.valor_total.to_f) %>
 </p>
 
 <p>
   <strong>Forma pagmento:</strong>
   <%= @venda.forma_pagamento.descricao %>
 </p>
-
-<p>
-  <strong>Parcelas:</strong>
-  <br/ >
-  <table class='table-show-parc'>
-    <% i = 1 %>
-    
-      <% @venda.parcelas.each do |par|%>
-        <tr>          
-          <td>parcela: <%= i %></td>
-          <td>Valor: <%= par.valor %></td>
-          <td>
-              Vencimento: <%= I18n.l(par.vencimento) %>              
-          </td>
-          <td>
-          <% if par.status.eql?(true) %> 
-            <% route  = 'reabrir-parcela' %> 
-            <% classe = 'btn-success' %>
-            <% valor  = 'Reabrir Parcela'%>
-          <% else %>
-            <% classe = 'btn-default' %>
-            <% route  = 'baixar-parcela' %> 
-            <% valor  = 'Baixar Parcela' %>
-          <% end %>  
-          <%= link_to "#{valor}", "/#{route}/#{par.id}", method: :put, class: " btn #{classe}", data: { confirm: 'Deseja proseguir?' } %></td>
-        </tr>
-        <% i += 1%>
+<% unless @venda.parcelas.empty? %>
+  <p>
+    <strong>Parcelas:</strong>
+    <br/ >
+    <table class='table-show-parc'>
+      <% i = 1 %>
       
-    <% end %> 
-  </table>
-</p>
-
-<%= link_to 'Editar', edit_venda_path(@venda), remote: true,class: 'btn btn-default' %>
+        <% @venda.parcelas.each do |par|%>
+          <tr>          
+            <td>parcela: <%= i %></td>
+            <td>Valor: <%= par.valor %></td>          
+            <td>
+                Vencimento: <%= I18n.l(par.vencimento) %>              
+            </td>
+            <td>
+            <% if par.status.eql?(true) %> 
+              <% route  = 'reabrir-parcela' %> 
+              <% classe = 'btn-success' %>
+              <% valor  = 'Reabrir Parcela'%>
+            <% else %>
+              <% classe = 'btn-default' %>
+              <% route  = 'baixar-parcela' %> 
+              <% valor  = 'Baixar Parcela' %>
+            <% end %>  
+            <%= link_to "#{valor}", "/#{route}/#{par.id}", method: :put, class: " btn #{classe}", data: { confirm: 'Deseja proseguir?' } %></td>
+          </tr>
+          <% i += 1%>
+        
+      <% end %> 
+    </table>
+  </p>
+<% end %>
+<!-- desativado o editar-->
+<% link_to 'Editar', edit_venda_path(@venda), remote: true,class: 'btn btn-default' %>
 

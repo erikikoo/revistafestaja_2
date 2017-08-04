@@ -8,14 +8,12 @@
     
     <%= f.association :produtos, label_method: :descricao, value_method: :id, :input_html => { :multiple => false } %>    
     
-    <%= f.input :edicao, collection: @meses, include_blank: false, selected: @mes %>
-    <div class="input-group">
-      <span class="input-group-addon">R$: </span>
-      <div id="valor-total">
-        <%= render 'field_valor_total', f: f %>
-      </div>      
-      
-    </div>
+    <%= f.input :desconto, collection: 0..50 %>
+
+    <%= f.input :edicao, collection: @meses, include_blank: false, selected: @mes %>    
+    
+    <%= render 'field_valor_total', f: f %>
+    
     <%= f.association :forma_pagamento, label_method: :descricao, value_method: :id, include_blank: true %>            
     
     
@@ -33,13 +31,15 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, 'Criar' %>
+      <%= f.button :submit, 'Criar', data: { confirm: 'Deseja fechar esta venda?' } %>
     </div>
   </div>  
 <% end %>
 
 <script>
       $(document).ready(function() {
+          $("#venda_desconto").attr('maxlength', '2');
+
           $('#parcelas').on('cocoon:after-insert', function(e, insertedItem) {
             load_datepicked();
           });
@@ -79,26 +79,57 @@
            }
         });     
         
-        $("#venda_produto_ids").change(function(event) {
-          var val = $(this).val();
-          $.ajax({
-            url: '/reloadTotal',            
-            data: {id: val}
-          })
-          .done(function() {
-            console.log("success");
-          })
-          .success(function(result){
-            console.log(result);
-          })
-          .fail(function() {
-            console.log("error");
-          })
-          .always(function() {
-            console.log("complete");
-          });
+          // $("#venda_produto_ids").change(function(event) {
+          //   var val = $(this).val();
+          //   var desc = $("#venda_desconto").val();
+          //   $.ajax({
+          //     url: '/reloadTotal',            
+          //     data: {
+          //       id: val,
+          //       desc: desc
+          //     }
+          //   })
+          //   .done(function() {
+          //     console.log("success");
+          //   })
+          //   .success(function(result){
+          //     console.log(result);
+          //   })
+          //   .fail(function() {
+          //     console.log("error");
+          //   })
+          //   .always(function() {
+          //     console.log("complete");
+          //   });
+            
+            
+          // });
+
+        $("#venda_desconto").change(function(event) {
+          var val = $("#venda_produto_ids").val();
+          var desc = $("#venda_desconto").val();
+          if ((desc != "") && (val != "") ) {
+            $.ajax({
+              url: '/reloadTotal',            
+              data: {
+                id: val,
+                desc: desc
+              }
+            })
+            .done(function() {
+              console.log("success");
+            })
+            .success(function(result){
+              console.log(result);
+            })
+            .fail(function() {
+              console.log("error");
+            })
+            .always(function() {
+              console.log("complete");
+            });
           
-          
+          }
         });
 
     });

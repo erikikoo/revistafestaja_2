@@ -5,6 +5,8 @@
     <div class="panel-heading">Dados do cliente</div>
     <div class="panel-body">
           <div class="form-group form-inputs">
+              <%= f.input :banner, as: :file %>
+              
               <%= f.input :razao_social, class: 'form-control', placeholder: 'Digite aqui a razão social do cliente...', autofocus: true %>  
             
               <%= f.input :responsavel, class: 'form-control', placeholder: 'Digite aqui o Responsavel...'%>   

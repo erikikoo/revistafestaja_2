@@ -68,3 +68,6 @@ input[type=number] {
     line-height: 24px !importante;
     padding: 0 0.5rem !importante;
 }
+input[type=range] + .thumb {
+	top: 350px !important;
+}

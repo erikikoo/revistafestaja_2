@@ -2,7 +2,7 @@ class ClientesController < ApplicationController
   before_action :set_cliente, only: [:show, :edit, :update, :destroy, :cliente_publicar, :cliente_despublicar]
   before_action :get_all_segmentos, only: [:index, :new, :show,:edit, :destroy]
   before_action :get_all, only: [:index, :destroy, :update,:cliente_publicar, :cliente_despublicar]
-  
+  skip_before_action :verify_authenticity_token
   layout 'admin'
 
   before_action :authenticate_user!
@@ -38,8 +38,7 @@ class ClientesController < ApplicationController
   # POST /clientes
   # POST /clientes.json
   def create
-    @cliente = Cliente.new(cliente_params)
-    
+    @cliente = Cliente.new(cliente_params) 
     
     respond_to do |format|
       if @cliente.save
@@ -118,6 +117,6 @@ class ClientesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cliente_params
-      params.require(:cliente).permit(:responsavel, :razao_social, :segmento_ids=>[], :contatos_attributes => [:id, :numero, :_destroy, :whatsapp], :enderecos_attributes => [:id, :end, :numero, :complemento])
+      params.require(:cliente).permit(:responsavel, :razao_social, :banner, :segmento_ids=>[], :contatos_attributes => [:id, :numero, :_destroy, :whatsapp], :enderecos_attributes => [:id, :end, :numero, :complemento])
     end
 end

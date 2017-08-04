@@ -1,7 +1,17 @@
-
-
-	
-	
-	<%= text_field_tag 'venda[valor_total]',  @valor, class: 'form-control' %> 
-
+<% if @action.eql?('update') %>	
+	<%= f.input :valor_total %>
+<% else %>
+      
+    <div id="valor-total">
+        <%= label_tag 'Valor Total' %>
+        <%= text_field_tag 'venda[valor_total]',  @valor, class: 'form-control'  %> 
+    </div>
+    <% if @desconto %>
+  	  <div id="valor-total-com-desconto">
+          <strong><%= label_tag 'Valor Total com desconto' %></strong>
+          <%= text_field_tag 'valor_total_com_desconto',  @desconto, class: 'form-control', disabled: true  %> 
+        </div>            	
+    
+  <% end %>
+<% end %>
 	

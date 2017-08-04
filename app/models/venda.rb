@@ -8,6 +8,8 @@ class Venda < ApplicationRecord
   
   has_many :parcelas, dependent: :destroy
   
+  validates :valor_total, presence: true
+
   accepts_nested_attributes_for :parcelas, allow_destroy: true, reject_if: :all_blank  
 
   paginates_per 10

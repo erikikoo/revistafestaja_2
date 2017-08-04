@@ -16,4 +16,6 @@ class Cliente < ApplicationRecord
 
 	paginates_per 10
 
+	mount_uploader :banner, BannerUploader
+
 end

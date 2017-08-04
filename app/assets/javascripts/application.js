@@ -28,6 +28,8 @@
 
 
 jQuery(document).ready(function($) {
+  $('[data-toggle="tooltip"]').tooltip();
+
   $('.btn-topo').css('display', 'none');
 
  //ao Realizar pesquisa scrola para topo  

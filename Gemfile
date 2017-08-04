@@ -5,12 +5,20 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+#image_storage
+gem 'cloudinary'
+gem 'carrierwave'
+#upload via ajax
+gem 'remotipart', '~> 1.2'
+#css
 gem 'materialize-sass'
 
 gem 'data-confirm-modal'
 
 gem 'bootstrap-datepicker-rails'
 #tradução
+#gem 'spree_i18n', github: 'spree-contrib/spree_i18n'
+
 gem 'rails-i18n', '~> 5.0.0'
 gem 'devise-i18n-views'
 #paginação
@@ -77,7 +85,7 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'ffaker'
+  
 end
 
 group :development do

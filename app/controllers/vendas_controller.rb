@@ -10,7 +10,8 @@ class VendasController < ApplicationController
   
   require "#{Rails.root}/lib/gera_codigo_venda.rb"
   require "#{Rails.root}/lib/mes.rb"
-
+  require "#{Rails.root}/lib/desconto.rb"
+  
   # GET /vendas
   # GET /vendas.json
   def index
@@ -43,6 +44,7 @@ class VendasController < ApplicationController
   # GET /vendas/1/edit
   def edit
     @action = 'update'
+    
     respond_to do |format|
       format.js { render :new, location: @action}
     end
@@ -51,9 +53,10 @@ class VendasController < ApplicationController
   # POST /vendas
   # POST /vendas.json
   def create
-    @venda = Venda.new(venda_params)
+     @venda = Venda.new(venda_params)
     @venda.user_id = current_user.id    
     #@venda.forma_pagamento_id = 1 if @venda.valor_total < 50
+    @venda.desconto.blank? ? @venda.desconto = 0 : @venda.desconto
     if @venda.forma_pagamento_id.eql?(1)
       parcelas = @venda.parcelas.new
       parcelas.valor = @venda.valor_total
@@ -106,8 +109,10 @@ class VendasController < ApplicationController
   end
 
   def get_valor      
-     valor = Produto.find(params[:id])     
-     @valor = total_valor(valor.valors.last.preco)     
+     valor = Produto.find(params[:id]) 
+     @desconto = Desconto.new(params[:desc].to_i, valor.valors.last.preco.to_i).valor_com_desconto    
+     
+     @valor = total_valor(valor.valors.last.preco)
      respond_to do |format|
       format.js { render :valor_total}
     end
@@ -143,11 +148,11 @@ class VendasController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_venda
-      @venda = Venda.find(params[:id])
+      @venda = Venda.includes(:parcelas, :produtos).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def venda_params
-      params.require(:venda).permit(:user_id, :cliente_id,  :forma_pagamento_id, :edicao, :valor_total, :codigo, :produto_ids, parcelas_attributes: [:_destroy,:venda_id, :valor, :vencimento, :status])
+      params.require(:venda).permit(:user_id, :cliente_id,  :forma_pagamento_id, :edicao, :valor_total, :desconto, :codigo, :produto_ids, parcelas_attributes: [:_destroy,:venda_id, :valor, :vencimento, :status])
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731233209) do
+ActiveRecord::Schema.define(version: 20170801221234) do
 
   create_table "cliente_segmentos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "cliente_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170731233209) do
     t.datetime "updated_at",                   null: false
     t.boolean  "publicar",     default: false
     t.string   "razao_social"
+    t.string   "banner"
   end
 
   create_table "contatos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -88,6 +89,7 @@ ActiveRecord::Schema.define(version: 20170731233209) do
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
+    t.string   "name"
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -99,7 +101,6 @@ ActiveRecord::Schema.define(version: 20170731233209) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "name"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -125,6 +126,7 @@ ActiveRecord::Schema.define(version: 20170731233209) do
     t.integer  "cliente_id"
     t.string   "edicao"
     t.float    "valor_total",        limit: 24
+    t.integer  "desconto"
     t.string   "codigo",             limit: 11
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false

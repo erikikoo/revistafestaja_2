@@ -8,7 +8,11 @@
 					
 			<div class='item'>
 				<div class='cliente-index-logo'>						
-					<img src="http://via.placeholder.com/250x220" alt="" class='img-responsive'>
+					<% if cliente.banner.blank? %>						
+						<img src="http://via.placeholder.com/250x220" alt="" class='img-responsive'>
+					<% else %>	
+						<%= image_tag(cliente.banner.url(:medium),:crop => :thumb, :gravity => :face) %>
+					<% end %>
 				</div>
 				<div class="cliente-index-conteudo">
 					<h5 class='text-center'><%= cliente.razao_social %></h5>

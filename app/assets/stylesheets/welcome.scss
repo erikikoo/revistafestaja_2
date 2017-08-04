@@ -180,7 +180,7 @@ input[type=search] {
 @media (min-width: 400px) and (max-width: 415px) {
     #q_razao_social_cont {
         display: inline;
-        width: 53vw;
+        width: 49vw;
     }
     .btn-search {
         width: 21vw;
@@ -191,21 +191,21 @@ input[type=search] {
 @media only screen and (min-width: 416px) {
     #q_razao_social_cont {
         display: inline;
-        width: 58vw;
+        width: 53vw;
     }
 }
 
 @media only screen and (min-width: 500px) {
     #q_razao_social_cont {
         display: inline;
-        width: 63vw;
+        width: 58vw;
     }
 }
 
 @media (min-width: 500px) and (max-width: 521px) {
     #q_razao_social_cont {
         display: inline;
-        width: 62vw;
+        width: 57vw;
     }
 }
 
@@ -216,7 +216,7 @@ input[type=search] {
     }
     #q_razao_social_cont {
         display: inline;
-        width: 70vw;
+        width: 65vw;
     }
     #timeline[data-columns]::before {
         content: '3 .column.size-1of3';
@@ -235,7 +235,7 @@ input[type=search] {
     width: 10vw;
     }
     #q_razao_social_cont {
-        width: 78vw;
+        width: 73vw;
     }
     #timeline[data-columns]::before {
         content: '4 .column.size-1of4';
@@ -249,7 +249,7 @@ input[type=search] {
         width: 10vw;
     }
     #q_razao_social_cont {
-        width: 80vw;
+        width: 75vw;
     }    
 
     #timeline[data-columns]::before {
