@@ -1,4 +1,4 @@
-<%= simple_form_for(@cliente, remote: true) do |f| %>
+<%= simple_form_for(@cliente, html: {remote: true, multipart: true}) do |f| %>
     <%= f.error_notification %>
 
   <div class="panel panel-default">
