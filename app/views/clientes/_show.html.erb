@@ -1,48 +1,64 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Razão Social:</strong>
-  	
-  	<%= @cliente.razao_social %>
-  <br />
-  <strong>Responsável:</strong>
-  	<%= @cliente.responsavel %>	
-</p>
-<p>
-	<strong>Endereço:</strong>
-	<br />
-	<% @cliente.enderecos.each do |e|%>
+<div class='pag-show'>
+	<div class='banner'>			
+		
+		<% if @cliente.banner.blank? %>						
+			<img src="http://via.placeholder.com/250x220" alt="" class='img-responsive'>
+		<% else %>	
+			<%= image_tag(@cliente.banner.url(:medium),:crop => :thumb, :gravity => :face) %>
+		<% end %>			
+	</div>
+	<div class='dados'>
+				
+		
+
+				<p>
+		  <strong>Razão Social:</strong>
+		  	
+		  	<%= @cliente.razao_social %>
+		  <br />
+		  <strong>Responsável:</strong>
+		  	<%= @cliente.responsavel %>	
+		</p>
+		<p>
+			<strong>Endereço:</strong>
+			<br />
+			<% @cliente.enderecos.each do |e|%>
+										
+				<%= e.end unless e.end.blank? %>
+				<% unless e.end.blank? %>
+					<%= e.numero ? ' - s/n' :  "-  #{e.numero}" %>		
+				<% end %>
+				<%= ' - ' + e.complemento unless e.complemento.blank?  %>
+											
+			<% end %>
+		</p>
+			<p>
+				<strong>Segmento</strong>
+				<ul>
+					<% @cliente.segmentos.each do |s|%>
+						<li>
+							<%= s.descricao %>					
+						</li>
+					<% end %>			
+				</ul>
+			</p>
+		<p>
+			<strong>Contatos: </strong>
+			<br />
+			<% @cliente.contatos.each do |c|%>
+				<% if c.whatsapp == '1' %>
+					<i class="fa fa-whatsapp" aria-hidden="true"></i>
+				<% else %>								
+					<i class="fa fa-phone" aria-hidden="true"></i>
+				<% end %>	
+				<%= c.numero %> <br />	
 								
-		<%= e.end unless e.end.blank? %>
-		<% unless e.end.blank? %>
-			<%= e.numero ? ' - s/n' :  "-  #{e.numero}" %>		
-		<% end %>
-		<%= ' - ' + e.complemento unless e.complemento.blank?  %>
-									
-	<% end %>
-</p>
-	<p>
-		<strong>Segmento</strong>
-		<ul>
-			<% @cliente.segmentos.each do |s|%>
-				<li>
-					<%= s.descricao %>					
-				</li>
-			<% end %>			
-		</ul>
-	</p>
-<p>
-	<strong>Contatos: </strong>
-	<br />
-	<% @cliente.contatos.each do |c|%>
-		<% if c.whatsapp == '1' %>
-			<i class="fa fa-whatsapp" aria-hidden="true"></i>
-		<% else %>								
-			<i class="fa fa-phone" aria-hidden="true"></i>
-		<% end %>	
-		<%= c.numero %> <br />	
-						
-	<% end %>
-</p>
+			<% end %>
+		</p>
+</div>	
+</div>
+
 
 <%= link_to 'Editar', edit_cliente_path(@cliente), remote: true,class: 'btn btn-default btn-show-editar' %>

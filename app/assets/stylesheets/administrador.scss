@@ -96,3 +96,20 @@ header {
 	}
 
 }
+
+.pag-show {
+
+	display: flex;
+	
+	.banner {
+		position: relative;
+		left: 50px;
+
+		margin-right: 160px;
+	}
+}
+
+.btn-show-editar {
+		position: relative;
+		left: 0 !important;
+	}	
