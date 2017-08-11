@@ -2,7 +2,9 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"><%= "Venda Nº: #{@venda.codigo}" %></h5>
+        <h5 class="modal-title">
+            <%= "Venda Nº: #{@venda.codigo}" %>            
+        </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -10,11 +12,51 @@
       <div class="modal-body">
         <% if @action.eql?('show') %>
           <%= render partial: "show" %>
-        <% else %>
-          <%= render partial: "form" %>
+        <% else %>          
+            <!-- Nav tabs -->
+            <ul class="tabs text-center" role="tablist">
+              <li role="presentation" class=" tab"><a href="#historico" aria-controls="historico" role="tab" data-toggle="tab" class='active'>Histórico de contato</a></li>    
+              <li role="presentation" class=" tab"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Detalhes da Venda</a></li>
+            </ul>
+            <% if @venda.orcamento and @venda.faturar.eql?(false) %>
+               <div class="jumbotron text-center">
+                  <h5>ORÇAMENTO</h5>
+               </div>
+             <% end %>
+             <% if @venda.orcamento.eql?(false) and @venda.faturar %>
+               <div class="jumbotron text-center">
+                  <h5>Faturar</h5>
+               </div>
+             <% end %> 
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="historico">
+                <%= render partial: "historico_convercas/form", location: @venda_id %>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="home">
+                <%= render partial: "form" %>
+              </div>
+              
+            </div>
+
+          </div>
+
+
+
+
+
         <% end %>
       </div>
       
     </div>
   </div>
 
+<div>
+
+  
+
+<script>
+//$('#myTabs a[href="#profile"]').tab('show') // Select tab by name
+//$('#myTabs a:first').tab('show') // Select first tab
+$('ul.tabs').tabs();
+</script>

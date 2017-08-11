@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Historico Convercas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Venda</th>
+      <th>User</th>
+      <th>Descricao</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @historico_convercas.each do |historico_converca| %>
+      <tr>
+        <td><%= historico_converca.venda %></td>
+        <td><%= historico_converca.user %></td>
+        <td><%= historico_converca.descricao %></td>
+        <td><%= link_to 'Show', historico_converca %></td>
+        <td><%= link_to 'Edit', edit_historico_converca_path(historico_converca) %></td>
+        <td><%= link_to 'Destroy', historico_converca, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Historico Converca', new_historico_converca_path %>

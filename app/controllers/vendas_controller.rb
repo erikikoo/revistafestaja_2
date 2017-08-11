@@ -12,8 +12,7 @@ class VendasController < ApplicationController
   require "#{Rails.root}/lib/mes.rb"
   require "#{Rails.root}/lib/desconto.rb"
   
-  # GET /vendas
-  # GET /vendas.json
+  
   def index
     @vendas_count = Venda.count
     @vendas = Venda.order(:codigo).page params[:page]
@@ -21,63 +20,91 @@ class VendasController < ApplicationController
     @vendas = @q.result.page(params[:page])         
   end
 
-  # GET /vendas/1
-  # GET /vendas/1.json
+  
   def show
     @action = 'show'
     @parcelas = Parcela.new
   end
 
-  # GET /vendas/new
+  
   def new    
     @venda                 = Venda.new            
-    @venda.parcelas.build
-
-    @meses                 = Mes.new.meses    
-    @mes                   = @meses[Time.new.month-1]
     
-    #@venda.n_parcelas      = 1 
-    @venda.codigo          = @new_cod
+    $_historico = Venda.where(cliente_id: params[:id], orcamento: true)
+    
+    
+    @historico = $_historico.last
+    @historicos = $_historico.last
+    
+    @historico_converca = HistoricoConverca.new
+    #Venda.where(cliente_id: 7, orcamento: true)
+    unless @historico.nil?
+      
+      @venda = @historico
+                  
+      @venda.codigo = @historico.codigo
+      
+      @venda_id = @historico.id
+      
+      $_desconto = Desconto.new(@historico.desconto.to_i, @historico.valor_total.to_i)
+      @desconto = $_desconto.valor_com_desconto.to_s
+      @valor = $_desconto.get_valor_total.to_s      
+      
+    else
+      @meses                 = Mes.new.meses    
+      @mes                   = @meses[Time.new.month-1]      
+      @venda.codigo          = @new_cod.gera_codigo
+    end
     @venda.cliente_id      = @cliente.id    
+    
+    @venda.parcelas.build
+    @venda.historico_convercas.build
   end
 
-  # GET /vendas/1/edit
+  
   def edit
     @action = 'update'
-    
+    @historico_converca = HistoricoConverca.new
     respond_to do |format|
       format.js { render :new, location: @action}
     end
   end
 
-  # POST /vendas
-  # POST /vendas.json
+  
   def create
-     @venda = Venda.new(venda_params)
+    @venda = Venda.new(venda_params)
+    
     @venda.user_id = current_user.id    
-    #@venda.forma_pagamento_id = 1 if @venda.valor_total < 50
     @venda.desconto.blank? ? @venda.desconto = 0 : @venda.desconto
+    #teste = @venda.historico_convercas.user_id
+    #teste = current_user.id
+    #historico = @venda.historico_convercas.new
+    #historico.venda_id = @new_cod
+    
     if @venda.forma_pagamento_id.eql?(1)
       parcelas = @venda.parcelas.new
       parcelas.valor = @venda.valor_total
       ven = Time.new + 7.days
       parcelas.vencimento = ven
     end    
-    @venda.codigo = @new_cod
+
+    @venda.codigo = @new_cod.gera_codigo
+    
     respond_to do |format|
       if @venda.save!             
+        historico = HistoricoConverca.last
+        historico.update_attributes(user_id: current_user.id)
         format.js { redirect_to clientes_path, notice: 'Venda criada com sucesso!' }
         
       else
-        @venda.cod = @new_cod
+        @venda.cod = @new_cod.gera_codigo
         format.html { render :new }
         
       end
     end
   end
 
-  # PATCH/PUT /vendas/1
-  # PATCH/PUT /vendas/1.json
+  
   def update
     respond_to do |format|
       if @venda.update(venda_params)
@@ -91,8 +118,7 @@ class VendasController < ApplicationController
     end
   end
 
-  # DELETE /vendas/1
-  # DELETE /vendas/1.json
+  
   def destroy
     @venda.destroy
       respond_to do |format|        
@@ -138,7 +164,7 @@ class VendasController < ApplicationController
 
     def gera_codigo
       last_cod               = Venda.select("codigo").last
-      @new_cod               = GeraCodigoVenda.new(last_cod).gera_codigo
+      @new_cod               = GeraCodigoVenda.new(last_cod)
 
     end
 
@@ -146,13 +172,13 @@ class VendasController < ApplicationController
       @cliente = Cliente.find(params[:id])
     end
 
-    # Use callbacks to share common setup or constraints between actions.
+    
     def set_venda
       @venda = Venda.includes(:parcelas, :produtos).find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    
     def venda_params
-      params.require(:venda).permit(:user_id, :cliente_id,  :forma_pagamento_id, :edicao, :valor_total, :desconto, :codigo, :produto_ids, parcelas_attributes: [:_destroy,:venda_id, :valor, :vencimento, :status])
+      params.require(:venda).permit(:user_id, :cliente_id,  :forma_pagamento_id, :orcamento,:edicao, :valor_total, :desconto, :codigo, :id, :produto_ids, parcelas_attributes: [:_destroy,:venda_id, :valor, :vencimento, :status], historico_convercas_attributes: [:_destroy, :venda_id, :user_id, :descricao])
     end
 end

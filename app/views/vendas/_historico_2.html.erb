@@ -1,0 +1,19 @@
+<div class="panel-historico-converca">
+          <h3>Histórico </h3>
+          <% if @historicos.nil? %>
+              sem histórico
+          <% else %>
+            <% @historicos.each do |d| %>
+                <p>
+                <hr/>
+                  <p>
+                    <%= d.descricao %>  
+                  </p>                  
+                  <%= @historicos.user.name if @historicos.empty? %><br>
+                  <%= d.created_at.strftime("%m/%d/%Y") unless d.created_at.nil? %>
+                </p>
+            <% end %>
+          <% end %>
+      </div>
+
+     <%= render 'historico_convercas/form', f: @historico %>

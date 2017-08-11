@@ -46,6 +46,12 @@ input[type=number] {
 	/*opacity: 1 !important;*/
 }
 
+.radio input[type=radio]{
+	left: 0 !important;
+	opacity: 1 !important;
+	margin: 0 !important;
+}
+
 [type="checkbox"]:checked+label:before {
 	top: 0 !important;
 }
@@ -70,4 +76,22 @@ input[type=number] {
 }
 input[type=range] + .thumb {
 	top: 350px !important;
+}
+
+.btn-remove-contact {
+	position: relative !important;
+	top: 25px !important;
+}
+
+.mascara {
+	display: none;
+	width: 250px;
+	height: 30px;
+	position: fixed;
+	right: 50%;
+	left: 50%;	
+	margin-left: -142px;	
+	background-color: #FFE57E;	
+	z-index: 99;
+	top: 50%;
 }

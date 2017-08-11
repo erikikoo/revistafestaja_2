@@ -32,3 +32,25 @@
 label[for='Valor_Total_com_desconto'] {
 	color: green;
 }
+
+.panel-historico-converca1 {
+	position: relative;
+	width: 50%;
+	//float: right;
+	//top: 0;
+	//top: -550px;
+	height: 520px;
+	margin-right: 30px;
+	overflow-y:scroll;	
+	left: 50px;
+}
+
+.panel-form1 {
+	width: 40%;
+	//clear: both;
+}
+
+.principal_form1 {
+	display: -webkit-box;
+	position: relative;
+}

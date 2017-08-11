@@ -16,12 +16,12 @@
         </td>
         <td><%= cliente.publicar ? 'publicado': ''  %></td>
         <td>
-          
-          <%= link_to 'Vender', "/vendas/#{cliente.id}/cliente", class: 'btn btn-success btn-xs', remote: true %>
-          
-          <%= link_to 'Detalhes', cliente, class: 'btn btn-default  btn-xs', remote: true %>
-          <%= link_to 'Editar', edit_cliente_path(cliente), class: 'btn btn-default  btn-xs', remote: true %>
-          <%= link_to 'Apagar', cliente, method: :delete, remote: true, data: { confirm: 'Deseja proseguir?' }, class: 'btn btn-danger  btn-xs' %>
+             
+              <%= link_to 'Vender', "/vendas/#{cliente.id}/cliente", class: 'btn btn-success btn-xs', remote: true %>
+              
+              <%= link_to 'Detalhes', cliente, class: 'btn btn-default  btn-xs', remote: true %>
+              <%= link_to 'Editar', edit_cliente_path(cliente), class: 'btn btn-default  btn-xs', remote: true %>
+              <%= link_to 'Apagar', cliente, method: :delete, remote: true, data: { confirm: 'Deseja proseguir?' }, class: 'btn btn-danger  btn-xs' %>
           
         </td>
       </tr>

@@ -8,6 +8,14 @@ class GeraCodigoVenda
 		end	
 	end
 
+	def get_last_codigo
+		if @last_cod.eql?(0)
+			self.gera_codigo	
+		else
+			@last_cod.codigo
+		end
+	end
+
 	def gera_codigo
 		unless @last_cod.eql?(0) 
 			last_cod = @last_cod.codigo.to_s[-4..-1].to_i 

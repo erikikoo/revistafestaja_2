@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801221234) do
+ActiveRecord::Schema.define(version: 20170807203745) do
 
   create_table "cliente_segmentos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "cliente_id"
@@ -53,6 +53,16 @@ ActiveRecord::Schema.define(version: 20170801221234) do
     t.string   "descricao"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "historico_convercas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "venda_id"
+    t.integer  "user_id"
+    t.text     "descricao",  limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["user_id"], name: "index_historico_convercas_on_user_id", using: :btree
+    t.index ["venda_id"], name: "index_historico_convercas_on_venda_id", using: :btree
   end
 
   create_table "parcelas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -128,9 +138,11 @@ ActiveRecord::Schema.define(version: 20170801221234) do
     t.float    "valor_total",        limit: 24
     t.integer  "desconto"
     t.string   "codigo",             limit: 11
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
     t.integer  "forma_pagamento_id"
+    t.boolean  "orcamento",                     default: false
+    t.boolean  "faturar",                       default: false
     t.index ["cliente_id"], name: "index_vendas_on_cliente_id", using: :btree
     t.index ["forma_pagamento_id"], name: "index_vendas_on_forma_pagamento_id", using: :btree
     t.index ["user_id"], name: "index_vendas_on_user_id", using: :btree
@@ -140,6 +152,8 @@ ActiveRecord::Schema.define(version: 20170801221234) do
   add_foreign_key "cliente_segmentos", "segmentos"
   add_foreign_key "contatos", "clientes"
   add_foreign_key "enderecos", "clientes"
+  add_foreign_key "historico_convercas", "users"
+  add_foreign_key "historico_convercas", "vendas"
   add_foreign_key "parcelas", "vendas"
   add_foreign_key "produto_valors", "produtos"
   add_foreign_key "produto_valors", "valors"

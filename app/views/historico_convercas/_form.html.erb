@@ -1,0 +1,19 @@
+<div id="historico-panel">
+	<%= render partial: 'historico_convercas/historico', location: @historicos %>
+</div>	
+
+
+<%= simple_form_for(@historico_converca, remote: true) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :venda_id, :as => :hidden, :input_html => { :value => @venda_id } %>		
+  <div class="form-inputs">
+    <%= f.input :descricao, label: 'Detalhe do contato', placeholder: 'detalhe o assunto tratado com o cliente CAMPO OBRIGATÓRIO', error: "Campo obrigatório" %>
+	<h6>Campo Obrigatório</h6>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Incluir' %>
+  </div>
+<% end %>
+
+  

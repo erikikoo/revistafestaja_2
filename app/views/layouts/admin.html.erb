@@ -34,9 +34,15 @@
       <div class="dados-user text-right">
         <i class='material-icons medium'>person</i>
         <span><%= current_user.name %></span>
-        <%= link_to raw("<i class='material-icons medium'>power_settings_new</i>"), destroy_user_session_path, method: :delete %>
+        <%= link_to raw("<i class='material-icons medium'>power_settings_new</i>"), destroy_user_session_path, method: :delete %>        
       </div>
     </header>
+    <div class="mascara">
+        <div class="spinner text-center" id="loading">
+            <%= image_tag('ajax-loader.gif')%>
+          <strong>Por favor aguarde!</strong>
+        </div>
+    </div>
     <div id="admin-modal" class="modal"></div>
     <div class="menu">
       <%= render 'administrador/menu' %>      

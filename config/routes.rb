@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :historico_convercas
   scope '/administrador' do
     resources :parcelas
     resources :valors
@@ -35,6 +36,8 @@ Rails.application.routes.draw do
   
   get '/reloadParcelas'             =>'vendas#gera_parcelas'
   get '/reloadTotal'                =>'vendas#get_valor'
+
+  get '/loadHistorico'              => 'historico_convercas#reload'
 
   put '/baixar-parcela/:id'          =>'parcelas#baixar_parcela'
   put '/reabrir-parcela/:id'         =>'parcelas#reabrir_parcela'

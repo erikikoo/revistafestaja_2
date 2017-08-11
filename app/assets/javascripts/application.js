@@ -24,10 +24,18 @@
 //= require twitter/bootstrap/modal
 //= require_tree .
 
-
+$(document).ajaxStart(function() {          
+      $(".mascara").show();    
+});  
+  
+$(document).ajaxStop(function() {
+    $(".mascara").hide();
+});
 
 
 jQuery(document).ready(function($) {
+  
+
   $('[data-toggle="tooltip"]').tooltip();
 
   $('.btn-topo').css('display', 'none');
@@ -130,8 +138,7 @@ jQuery(document).ready(function($) {
 });
 
 function apagaFieldSearch(val) {
-  $('#q_razao_social_cont').blur(function(event) {
-    
+  $('#q_razao_social_cont').blur(function(event) {    
         
         $('#index-cliente-btn').css({       
           opacity: val

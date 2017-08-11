@@ -1,49 +1,67 @@
 <%= simple_form_for(@venda, remote: true) do |f| %>
-  <%= f.error_notification %>
+  <%= f.error_notification %>  
+    <div class="principal_form">
+          <div class="panel-form">  
+              <div class="form-inputs">    
+                  <%= f.input :codigo, label: 'Venda Nº', disabled: true %>
+                  
 
-  <div class="form-inputs">    
-    <%= f.input :codigo, label: 'Venda Nº', disabled: true %>
-    <hr />
-    <%= f.association :cliente, label_method: :razao_social, value_method: :id %>
-    
-    <%= f.association :produtos, label_method: :descricao, value_method: :id, :input_html => { :multiple => false } %>    
-    
-    <%= f.input :desconto, collection: 0..50 %>
+                  <hr />
+                  
+                  <%= f.collection_radio_buttons :orcamento, [[true, 'Orçamento'] ,[false, 'faturar']], :first, :last %>
+                  <%= f.association :cliente, label_method: :razao_social, value_method: :id %>
+                  
+                  <%= f.association :produtos, label_method: :descricao, value_method: :id, :input_html => { :multiple => false } %>    
+                  
+                  <%= f.input :desconto, collection: 0..50 %>
 
-    <%= f.input :edicao, collection: @meses, include_blank: false, selected: @mes %>    
-    
-    <%= render 'field_valor_total', f: f %>
-    
-    <%= f.association :forma_pagamento, label_method: :descricao, value_method: :id, include_blank: true %>            
-    
-    
-    <div id='parcelas' class='panel panel-default'>
-         <div class="panel-heading">Parcelas</div>
-      
-          <!-- Link Gem cocoon --> 
-          <%= link_to_add_association '+', f , :parcelas, 'data-association-insertion-node' => "#parcelas", 'data-association-insertion-method' => 'append', class: 'btnAdd btn btn-primary btn-New-Contact' %>    
-          <%= f.simple_fields_for :parcelas do |par| %>          
-              <%= render 'parcela_fields',  f: par  %>
-          <% end %>
-      
+                  <%= f.input :edicao, collection: @meses, include_blank: false, selected: @mes %>    
+                  
+                  <%= render 'field_valor_total', f: f %>
+                  
+                  <%= f.association :forma_pagamento, label_method: :descricao, value_method: :id, include_blank: true %>            
+                  
+                  
+                  <div id='parcelas' class='panel panel-default'>
+                       <div class="panel-heading">Parcelas</div>
+                    
+                        <!-- Link Gem cocoon --> 
+                        <%= link_to_add_association '+', f , :parcelas, 'data-association-insertion-node' => "#parcelas", 'data-association-insertion-method' => 'append', class: 'btnAdd btn btn-primary btn-New-Contact' %>    
+                        <%= f.simple_fields_for :parcelas do |par| %>          
+                            <%= render 'parcela_fields',  f: par  %>
+                        <% end %>
+                    
+                  </div>
+                  
+              </div>
+
+            
+          </div> 
+       
+
     </div>
-    
-    </div>
-
+            
     <div class="form-actions">
       <%= f.button :submit, 'Criar', data: { confirm: 'Deseja fechar esta venda?' } %>
     </div>
-  </div>  
+   
 <% end %>
 
 <script>
       $(document).ready(function() {
-          $("#venda_desconto").attr('maxlength', '2');
+        $("#venda_desconto").attr('maxlength', '2');
 
-          $('#parcelas').on('cocoon:after-insert', function(e, insertedItem) {
+        $('#parcelas').on('cocoon:after-insert', function(e, insertedItem) {
             load_datepicked();
-          });
+        });
         load_datepicked();
+
+        var op = $('#venda_forma_pagamento_id').find(':selected').val();
+        if (op == 2) {
+          $('#parcelas').css('display', 'block');
+        } else {
+          $('#parcelas').css('display', 'none');
+        }
 
         $('#venda_forma_pagamento_id').change(function(event) {
           var op = $(this).val();
@@ -79,31 +97,6 @@
            }
         });     
         
-          // $("#venda_produto_ids").change(function(event) {
-          //   var val = $(this).val();
-          //   var desc = $("#venda_desconto").val();
-          //   $.ajax({
-          //     url: '/reloadTotal',            
-          //     data: {
-          //       id: val,
-          //       desc: desc
-          //     }
-          //   })
-          //   .done(function() {
-          //     console.log("success");
-          //   })
-          //   .success(function(result){
-          //     console.log(result);
-          //   })
-          //   .fail(function() {
-          //     console.log("error");
-          //   })
-          //   .always(function() {
-          //     console.log("complete");
-          //   });
-            
-            
-          // });
 
         $("#venda_desconto").change(function(event) {
           var val = $("#venda_produto_ids").val();

@@ -14,4 +14,8 @@ class Desconto
 		valor_desconto = (@val - self.val_desc).to_f
 	end
 
+	def get_valor_total
+		@val
+	end
+
 end

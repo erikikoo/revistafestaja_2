@@ -1,0 +1,21 @@
+<% if @historicos.nil? %>
+		<p>		
+			Não Existem históricos
+		</p>
+	<% else %>	
+		<% @historicos.historico_convercas.each do |h| %>
+			<p>
+				<p class='text-justify'>				
+					<%= h.descricao %>
+				</p>
+				<div class='text-right'>
+					<strong>criado por:</strong>
+					<%= @historicos.user.name %>
+					<strong>em</strong>
+					<%= h.created_at.strftime("%d/%m/%y") %>	
+					
+				</div>
+			</p>
+			<hr />
+		<% end %>
+	<% end %>

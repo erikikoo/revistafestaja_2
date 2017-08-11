@@ -21,6 +21,12 @@
   </head>
 
   <body>
+    <div class="mascara">
+        <div class="spinner text-center" id="loading">
+            <%= image_tag('ajax-loader.gif')%>
+          <strong>Por favor aguarde!</strong>
+        </div>
+    </div>
     <%= yield %>
     <a href="#" class='btn-topo fa fa-chevron-up'></a>
   </body>
